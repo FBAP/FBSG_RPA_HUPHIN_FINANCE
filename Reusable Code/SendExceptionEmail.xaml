@@ -6,13 +6,12 @@
     <x:Property Name="in_RecipientsEmailList1" Type="InArgument(x:String)" />
     <x:Property Name="in_ExScreenshotsFolderPath" Type="InArgument(x:String)" />
     <x:Property Name="in_ExceptionOccured" Type="InArgument(x:String)" />
-    <x:Property Name="in_Source" Type="InArgument(x:String)" />
     <x:Property Name="io_ProcessType1" Type="InOutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>649.6,1620.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>620,1720.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendExceptionEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
@@ -91,7 +90,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Sends exception email to required recipients" DisplayName="SendExceptionEmail" sap:VirtualizedContainerService.HintSize="478.4,1556" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sends exception email to required recipients" DisplayName="SendExceptionEmail" sap:VirtualizedContainerService.HintSize="478.4,1656" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="ScreenshotFilePath" />
     </Sequence.Variables>
@@ -103,12 +102,8 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="436.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ExScreenshotsFolderPath" />
-        </InArgument>
-        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
-          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="ScreenshotFilePath" />
-        </InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_ExScreenshotsFolderPath]</InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[ScreenshotFilePath]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message: Send exception email started" sap:VirtualizedContainerService.HintSize="436.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Send exception email flow - Started&quot;]" />
@@ -118,7 +113,15 @@
         <OutArgument x:TypeArguments="x:String">[in_Body]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[in_Body.Replace("@ExceptionOccured", in_ExceptionOccured).Replace("@ExceptionSource", in_Source).Replace("@ProcessType", io_ProcessType1)]</InArgument>
+        <InArgument x:TypeArguments="x:String">[in_Body.Replace("@ExceptionOccured", in_ExceptionOccured).Replace("@ProcessType", io_ProcessType1)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="436.8,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[in_Subject]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Subject.Replace("@TodaysDate", now.ToString("dd-MM-yyyy"))]</InArgument>
       </Assign.Value>
     </Assign>
     <TryCatch sap2010:Annotation.AnnotationText="Try catch added for sending exception" DisplayName="Try Catch: Send exception email" sap:VirtualizedContainerService.HintSize="436.8,647.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
@@ -132,7 +135,9 @@
       <TryCatch.Try>
         <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Sends exception email to the reqired recipients.&#xA;Below are the arguments which are used:&#xA;1.  in_RecipientsEmailList = Specify list of recipients.&#xA;2.  in_Subject = Specify email subject.&#xA;3.  in_Body = Specify email body.&#xA;4.  in_AccountName = Specify account name from which email should be send.&#xA;5.  in_ExceptionAttachmentPath = Specify exception screenshot path which needs to be attached to exception email&#xA;6." Body="[in_Body]" Cc="[in_CcEmailList]" DisplayName="Send Outlook Mail Message: Exception" sap:VirtualizedContainerService.HintSize="200,384.8" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[in_Subject]" To="[in_RecipientsEmailList1]">
           <ui:SendOutlookMail.Files>
-            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+              <InArgument x:TypeArguments="x:String">[ScreenshotFilePath]</InArgument>
+            </scg:List>
           </ui:SendOutlookMail.Files>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">

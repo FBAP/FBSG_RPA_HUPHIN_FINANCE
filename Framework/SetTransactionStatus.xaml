@@ -201,7 +201,7 @@
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ueab:WriteCellX AutoIncrementRow="True" Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;V&quot;+ (io_TransactionNumber+1).ToString)]" DisplayName="Write Cell for DO Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_33" Value="[&quot;Bot 1: Success&quot;]" />
+                                                <ueab:WriteCellX AutoIncrementRow="True" Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;W&quot;+ (io_TransactionNumber+1).ToString)]" DisplayName="Write Cell for DO Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_33" Value="[&quot;Bot 1: Success&quot;]" />
                                               </Sequence>
                                             </ActivityAction>
                                           </ueab:ExcelApplicationCard.Body>
@@ -249,7 +249,7 @@
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ueab:WriteCellX AutoIncrementRow="True" Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;V&quot;+ (io_TransactionNumber+1).ToString)]" DisplayName="Write Cell for DO Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_34" Value="[&quot;Bot 1: Success&quot;]" />
+                                                <ueab:WriteCellX AutoIncrementRow="True" Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;W&quot;+ (io_TransactionNumber+1).ToString)]" DisplayName="Write Cell for DO Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_34" Value="[&quot;Bot 1: Success&quot;]" />
                                               </Sequence>
                                             </ActivityAction>
                                           </ueab:ExcelApplicationCard.Body>
@@ -297,7 +297,7 @@
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ueab:WriteCellX AutoIncrementRow="True" Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;V&quot;+ (io_TransactionNumber+1).ToString)]" DisplayName="Write Cell for DO Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_35" Value="[&quot;Bot 1: Success&quot;]" />
+                                                <ueab:WriteCellX AutoIncrementRow="True" Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;W&quot;+ (io_TransactionNumber+1).ToString)]" DisplayName="Write Cell for DO Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_35" Value="[&quot;Bot 1: Success&quot;]" />
                                               </Sequence>
                                             </ActivityAction>
                                           </ueab:ExcelApplicationCard.Body>
@@ -355,7 +355,7 @@
                 </ui:RetryScope>
               </If.Then>
             </If>
-            <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log Success with additional logging fields" sap:VirtualizedContainerService.HintSize="652,370.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log Success with additional logging fields" sap:VirtualizedContainerService.HintSize="820.8,370.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>

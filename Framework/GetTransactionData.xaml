@@ -19,7 +19,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2455,4480</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2454.4,4521.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="40">
@@ -106,10 +106,9 @@
       <AssemblyReference>UiPath.Platform</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="2465,4415" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;If there are no transaction items remaining, out_TransactionItem is set to Nothing, which leads to the End Process state. &#xA;&#xA;For cases in which there is only a single transaction (i.e., a linear process), use an If activity to check whether the argument in_TransactionNumber has the value 1 (meaning it is the first and only transaction) and assign the transaction item to out_TransactionItem. For any other value of in_TransactionNumber, out_TransactionItem should be set to Nothing.&#xA;&#xA;If there are multiple transactions, use the argument in_TransactionNumber as an index to retrieve the correct transaction to be processed. If there are no more transactions left, it is necessary to set out_TransactionItem to Nothing, thus ending the process." DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="2464.8,4456.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="InputExcelFileDaily" />
       <Variable x:TypeArguments="sd:DataTable" Name="CustomerNamesDT" />
@@ -126,8 +125,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Get Transaction Item" sap:VirtualizedContainerService.HintSize="2423,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get the transaction item&quot;]" />
-    <If Condition="[io_dt_TransactionData is Nothing]" DisplayName="if row count is greater than transaction number Assign transaction datatable to nothing" sap:VirtualizedContainerService.HintSize="2423,1232" sap2010:WorkflowViewState.IdRef="If_25">
+    <ui:LogMessage DisplayName="Log Message Get Transaction Item" sap:VirtualizedContainerService.HintSize="2423.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get the transaction item&quot;]" />
+    <If Condition="[io_dt_TransactionData is Nothing]" DisplayName="if row count is greater than transaction number Assign transaction datatable to nothing" sap:VirtualizedContainerService.HintSize="2423.2,1243.2" sap2010:WorkflowViewState.IdRef="If_25">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -135,13 +134,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence DisplayName="transacation data is empty" sap:VirtualizedContainerService.HintSize="1292,783" sap2010:WorkflowViewState.IdRef="Sequence_88">
+        <Sequence DisplayName="transacation data is empty" sap:VirtualizedContainerService.HintSize="1289.6,784.8" sap2010:WorkflowViewState.IdRef="Sequence_88">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[io_ProcessCounter=0]" DisplayName="If - Check process counter" sap:VirtualizedContainerService.HintSize="1250,691" sap2010:WorkflowViewState.IdRef="If_34">
+          <If Condition="[io_ProcessCounter=0]" DisplayName="If - Check process counter" sap:VirtualizedContainerService.HintSize="1248,692" sap2010:WorkflowViewState.IdRef="If_34">
             <If.Then>
               <Sequence DisplayName="Process Counter is 0" sap:VirtualizedContainerService.HintSize="594,533" sap2010:WorkflowViewState.IdRef="Sequence_123">
                 <sap:WorkflowViewStateService.ViewState>
@@ -292,13 +291,13 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence DisplayName="Process Counter is not 0" sap:VirtualizedContainerService.HintSize="611,310" sap2010:WorkflowViewState.IdRef="Sequence_124">
+              <Sequence DisplayName="Process Counter is not 0" sap:VirtualizedContainerService.HintSize="610.4,312" sap2010:WorkflowViewState.IdRef="Sequence_124">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="If process counter is less than scheduled details dt" sap:VirtualizedContainerService.HintSize="569,218" sap2010:WorkflowViewState.IdRef="If_35">
+                <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="If process counter is less than scheduled details dt" sap:VirtualizedContainerService.HintSize="568.8,219.2" sap2010:WorkflowViewState.IdRef="If_35">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -306,7 +305,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Assign DisplayName="Assign transacation number" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_34">
+                    <Assign DisplayName="Assign transacation number" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_34">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:Int32">[io_TransactionNumber]</OutArgument>
                       </Assign.To>
@@ -316,7 +315,7 @@
                     </Assign>
                   </If.Then>
                   <If.Else>
-                    <Assign DisplayName="Assign Transaction Item" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_35">
+                    <Assign DisplayName="Assign Transaction Item" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_35">
                       <Assign.To>
                         <OutArgument x:TypeArguments="sd:DataRow">[out_TransactionItem]</OutArgument>
                       </Assign.To>
@@ -332,14 +331,14 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence DisplayName="Assign transaction data to nothing if processing is done for respective process" sap:VirtualizedContainerService.HintSize="1086,1074" sap2010:WorkflowViewState.IdRef="Sequence_89">
+        <Sequence DisplayName="Assign transaction data to nothing if processing is done for respective process" sap:VirtualizedContainerService.HintSize="1083.2,1084" sap2010:WorkflowViewState.IdRef="Sequence_89">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[io_TransactionNumber &gt; io_dt_TransactionData.Rows.Count]" DisplayName="If processing is done for one process" sap:VirtualizedContainerService.HintSize="1044,982" sap2010:WorkflowViewState.IdRef="If_26">
+          <If Condition="[io_TransactionNumber &gt; io_dt_TransactionData.Rows.Count]" DisplayName="If processing is done for one process" sap:VirtualizedContainerService.HintSize="1041.6,991.2" sap2010:WorkflowViewState.IdRef="If_26">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -347,13 +346,13 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <If.Then>
-              <Sequence DisplayName="Assign transaction data to nothing" sap:VirtualizedContainerService.HintSize="695,824" sap2010:WorkflowViewState.IdRef="Sequence_90">
+              <Sequence DisplayName="Assign transaction data to nothing" sap:VirtualizedContainerService.HintSize="693.6,832" sap2010:WorkflowViewState.IdRef="Sequence_90">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign DisplayName="Assign process counter" sap:VirtualizedContainerService.HintSize="653,60" sap2010:WorkflowViewState.IdRef="Assign_29">
+                <Assign DisplayName="Assign process counter" sap:VirtualizedContainerService.HintSize="652,60" sap2010:WorkflowViewState.IdRef="Assign_29">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[io_ProcessCounter]</OutArgument>
                   </Assign.To>
@@ -361,7 +360,7 @@
                     <InArgument x:TypeArguments="x:Int32">[io_ProcessCounter+1]</InArgument>
                   </Assign.Value>
                 </Assign>
-                <Switch x:TypeArguments="x:String" DisplayName="Switch - Send report" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="653,182" sap2010:WorkflowViewState.IdRef="Switch`1_6">
+                <Switch x:TypeArguments="x:String" DisplayName="Switch - Send report" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="652,187.2" sap2010:WorkflowViewState.IdRef="Switch`1_6">
                   <Switch.Default>
                     <ui:LogMessage DisplayName="Default option" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_56" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
                   </Switch.Default>
@@ -371,7 +370,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Daily" DisplayName="Invoke SendReport workflow for Daily" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Reusable Code\SendReport.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Daily" DisplayName="Invoke SendReport workflow for Daily" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_25" UnSafe="False" WorkflowFileName="Reusable Code\SendReport.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_ReportBody">[in_Config("ReportBodyDaily").ToString]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_ReportSubject">[in_Config("ReportSubjectDaily").ToString]</InArgument>
@@ -381,7 +380,7 @@
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Consolidated" DisplayName="Invoke SendReport workflow for consolidated" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Reusable Code\SendReport.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Consolidated" DisplayName="Invoke SendReport workflow for consolidated" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Reusable Code\SendReport.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_ReportBody">[in_Config("ReportBodyConsolidated").ToString]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_ReportSubject">[in_Config("ReportSubjectConsolidated").ToString]</InArgument>
@@ -391,7 +390,7 @@
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Monthly" DisplayName="Invoke SendReport workflow for Monthly" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="Reusable Code\SendReport.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" x:Key="Monthly" DisplayName="Invoke SendReport workflow for Monthly" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="Reusable Code\SendReport.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_ReportBody">[in_Config("ReportBodyMonthly").ToString]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_ReportSubject">[in_Config("ReportSubjectMonthly").ToString]</InArgument>
@@ -402,7 +401,7 @@
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </Switch>
-                <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="check if schedule details DT has rows" sap:VirtualizedContainerService.HintSize="653,410" sap2010:WorkflowViewState.IdRef="If_31">
+                <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter]" DisplayName="check if schedule details DT has rows" sap:VirtualizedContainerService.HintSize="652,412" sap2010:WorkflowViewState.IdRef="If_31">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -410,13 +409,13 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <Sequence DisplayName="if Schedule details has more rows to process" sap:VirtualizedContainerService.HintSize="304,252" sap2010:WorkflowViewState.IdRef="Sequence_114">
+                    <Sequence DisplayName="if Schedule details has more rows to process" sap:VirtualizedContainerService.HintSize="304,252.8" sap2010:WorkflowViewState.IdRef="Sequence_114">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign transaction DT to nothing" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                      <Assign DisplayName="Assign transaction DT to nothing" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_23">
                         <Assign.To>
                           <OutArgument x:TypeArguments="sd:DataTable">[io_dt_TransactionData]</OutArgument>
                         </Assign.To>
@@ -424,7 +423,7 @@
                           <InArgument x:TypeArguments="sd:DataTable">[Nothing]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <Assign DisplayName="Assign - Initialize transaction item to 1" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_24">
+                      <Assign DisplayName="Assign - Initialize transaction item to 1" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_24">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Int32">[io_TransactionNumber]</OutArgument>
                         </Assign.To>
@@ -435,13 +434,13 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="if no more rows to process" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_115">
+                    <Sequence DisplayName="if no more rows to process" sap:VirtualizedContainerService.HintSize="304,152.8" sap2010:WorkflowViewState.IdRef="Sequence_115">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign - Transaction Item to nothing" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_32">
+                      <Assign DisplayName="Assign - Transaction Item to nothing" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_32">
                         <Assign.To>
                           <OutArgument x:TypeArguments="sd:DataRow">[out_TransactionItem]</OutArgument>
                         </Assign.To>
@@ -475,9 +474,9 @@
         </Sequence>
       </If.Else>
     </If>
-    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[io_dt_TransactionData Is Nothing]" DisplayName="While" sap:VirtualizedContainerService.HintSize="2423,2008" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[io_dt_TransactionData Is Nothing]" DisplayName="While" sap:VirtualizedContainerService.HintSize="2423.2,2027.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
-        <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter and io_dt_TransactionData is nothing]" DisplayName="If bot is running for first time for every process extract input" sap:VirtualizedContainerService.HintSize="644,1843" sap2010:WorkflowViewState.IdRef="If_20">
+        <If Condition="[io_ScheduleDetailsDT.Rows.Count&gt;io_ProcessCounter and io_dt_TransactionData is nothing]" DisplayName="If bot is running for first time for every process extract input" sap:VirtualizedContainerService.HintSize="641.6,1860" sap2010:WorkflowViewState.IdRef="If_20">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -485,13 +484,13 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <If.Then>
-            <Sequence DisplayName="Run process for each row" sap:VirtualizedContainerService.HintSize="608,1657" sap2010:WorkflowViewState.IdRef="Sequence_84">
+            <Sequence DisplayName="Run process for each row" sap:VirtualizedContainerService.HintSize="606.4,1671.2" sap2010:WorkflowViewState.IdRef="Sequence_84">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign DisplayName="Assign which process to run" sap:VirtualizedContainerService.HintSize="566,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+              <Assign DisplayName="Assign which process to run" sap:VirtualizedContainerService.HintSize="564.8,60" sap2010:WorkflowViewState.IdRef="Assign_20">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">[io_ProcessType]</OutArgument>
                 </Assign.To>
@@ -499,7 +498,7 @@
                   <InArgument x:TypeArguments="x:String">[io_ScheduleDetailsDT.Rows( io_ProcessCounter)("Report_Freq").ToString]</InArgument>
                 </Assign.Value>
               </Assign>
-              <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="566,1465" sap2010:WorkflowViewState.IdRef="Switch`1_5">
+              <Switch x:TypeArguments="x:String" DisplayName="Switch go to current process" Expression="[io_ProcessType]" sap:VirtualizedContainerService.HintSize="564.8,1478.4" sap2010:WorkflowViewState.IdRef="Switch`1_5">
                 <Switch.Default>
                   <ui:LogMessage DisplayName="If no process is to run" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;No process was supposed to run now.&quot;]" />
                 </Switch.Default>
@@ -509,7 +508,7 @@
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence x:Key="Daily" DisplayName="Extract data and assign into transaction data" sap:VirtualizedContainerService.HintSize="526,755" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                <Sequence x:Key="Daily" DisplayName="Extract data and assign into transaction data" sap:VirtualizedContainerService.HintSize="384,766.4" sap2010:WorkflowViewState.IdRef="Sequence_86">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="InputDaily" />
                   </Sequence.Variables>
@@ -519,7 +518,7 @@
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign Todays output file for daily" sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_36">
+                  <Assign DisplayName="Assign Todays output file for daily" sap:VirtualizedContainerService.HintSize="342.4,60" sap2010:WorkflowViewState.IdRef="Assign_36">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[io_OutputFileDaily]</OutArgument>
                     </Assign.To>
@@ -527,21 +526,21 @@
                       <InArgument x:TypeArguments="x:String">[in_Config("MasterFilePath").ToString+"Daily"+"\"+in_Config("MasterFileName").ToString+"_Daily_"+ Now.ToString("dd-MM-yyyy")+".xlsx"]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateMasterOutputFile workflow Daily" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Reusable Code\CreateMasterOutputFile.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateMasterOutputFile workflow Daily" sap:VirtualizedContainerService.HintSize="342.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_20" UnSafe="False" WorkflowFileName="Reusable Code\CreateMasterOutputFile.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_TodaysOutputFile">[io_OutputFileDaily]</InOutArgument>
                       <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CustomerNamesDT">[CustomerNamesDT]</OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateInputFolder workflow Daily" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Reusable Code\CreateInputFolder.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateInputFolder workflow Daily" sap:VirtualizedContainerService.HintSize="342.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_19" UnSafe="False" WorkflowFileName="Reusable Code\CreateInputFolder.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_InputExcelPath">[InputFolderPathDaily]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractInputDaily workflow" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="SDMS\ExtractInputDaily.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractInputDaily workflow" sap:VirtualizedContainerService.HintSize="342.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="SDMS\ExtractInputDaily.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_InputExcelFolderPathDaily">[InputFolderPathDaily]</InArgument>
                       <OutArgument x:TypeArguments="x:String" x:Key="out_InputExcelFileDaily">[InputExcelFileDaily]</OutArgument>
@@ -552,7 +551,7 @@
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <If sap2010:Annotation.AnnotationText="Read input file stored in input folder for the first time process runs for daily" Condition="[(io_dt_TransactionData is Nothing) and (InputDaily=True)]" DisplayName="Read input file - Daily" sap:VirtualizedContainerService.HintSize="484,108" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If sap2010:Annotation.AnnotationText="Read input file stored in input folder for the first time process runs for daily" Condition="[(io_dt_TransactionData is Nothing) and (InputDaily=True)]" DisplayName="Read input file - Daily" sap:VirtualizedContainerService.HintSize="342.4,112.8" sap2010:WorkflowViewState.IdRef="If_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -571,7 +570,7 @@
                     </If.Then>
                   </If>
                 </Sequence>
-                <Sequence x:Key="Consolidated" DisplayName="Consolidated" sap:VirtualizedContainerService.HintSize="526,1145" sap2010:WorkflowViewState.IdRef="Sequence_129">
+                <Sequence x:Key="Consolidated" DisplayName="Consolidated" sap:VirtualizedContainerService.HintSize="525.6,1157.6" sap2010:WorkflowViewState.IdRef="Sequence_129">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="InputConso" />
                   </Sequence.Variables>
@@ -589,14 +588,14 @@
                       <InArgument x:TypeArguments="x:String">[in_Config("MasterFilePath").ToString+"Consolidated"+"\"+in_Config("MasterFileName").ToString+"_Consolidated_"+ Now.ToString("dd-MM-yyyy")+".xlsx"]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateMasterOutputFile workflow Consolidated" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Reusable Code\CreateMasterOutputFile.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateMasterOutputFile workflow Consolidated" sap:VirtualizedContainerService.HintSize="484,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_21" UnSafe="False" WorkflowFileName="Reusable Code\CreateMasterOutputFile.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_TodaysOutputFile">[io_OutputFileConsolidated]</InOutArgument>
                       <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CustomerNamesDT">[CustomerNamesDT]</OutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateInputFolder workflow Consolidated" sap:VirtualizedContainerService.HintSize="484,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Reusable Code\CreateInputFolder.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateInputFolder workflow Consolidated" sap:VirtualizedContainerService.HintSize="484,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_22" UnSafe="False" WorkflowFileName="Reusable Code\CreateInputFolder.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
                       <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
@@ -609,7 +608,7 @@
                       <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfterMedium">[Cint( in_Config("DelayAfterMedium"))]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Daily Section: Extract input records from SDMS web portal into input file saved in input folder." DisplayName="Invoke ExtractInput workflow for Consolidated process" sap:VirtualizedContainerService.HintSize="484,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="SDMS\ExtractInputConsolidated.xaml">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Daily Section: Extract input records from SDMS web portal into input file saved in input folder." DisplayName="Invoke ExtractInput workflow for Consolidated process" sap:VirtualizedContainerService.HintSize="484,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_17" UnSafe="False" WorkflowFileName="SDMS\ExtractInputConsolidated.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
                       <InArgument x:TypeArguments="x:String" x:Key="in_InputExcelFolderPathConso">[InputFolderPathConso]</InArgument>
                       <OutArgument x:TypeArguments="x:String" x:Key="out_InputExcelFileConso">[InputExcelFileConsolidated]</OutArgument>
@@ -627,7 +626,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:InvokeWorkflowFile>
-                  <If sap2010:Annotation.AnnotationText="Read input file stored in input folder for the first time process runs for consolidated" Condition="[(io_dt_TransactionData is Nothing) and (InputConso=True)]" DisplayName="Read Consolidated Input file for first time" sap:VirtualizedContainerService.HintSize="484,304" sap2010:WorkflowViewState.IdRef="If_28">
+                  <If sap2010:Annotation.AnnotationText="Read input file stored in input folder for the first time process runs for consolidated" Condition="[(io_dt_TransactionData is Nothing) and (InputConso=True)]" DisplayName="Read Consolidated Input file for first time" sap:VirtualizedContainerService.HintSize="484,308" sap2010:WorkflowViewState.IdRef="If_28">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -636,7 +635,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <ui:ReadRange AddHeaders="True" DataTable="[io_dt_TransactionData]" DisplayName="Read Range - Input file for consolidated" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[InputExcelFileConsolidated]">
+                      <ui:ReadRange AddHeaders="True" DataTable="[io_dt_TransactionData]" DisplayName="Read Range - Input file for consolidated" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Sheet1" WorkbookPath="[InputExcelFileConsolidated]">
                         <ui:ReadRange.Range>
                           <InArgument x:TypeArguments="x:String">
                             <Literal x:TypeArguments="x:String" Value="" />
@@ -655,21 +654,21 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence x:Key="Monthly" DisplayName="Extract data and assign itto transaction data" sap:VirtualizedContainerService.HintSize="526,1238" sap2010:WorkflowViewState.IdRef="Sequence_113">
+                <Sequence x:Key="Monthly" DisplayName="Extract data and assign itto transaction data" sap:VirtualizedContainerService.HintSize="524.8,1244.8" sap2010:WorkflowViewState.IdRef="Sequence_113">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Get Input for Monthly Process" sap:VirtualizedContainerService.HintSize="484,802" sap2010:WorkflowViewState.IdRef="Sequence_107">
+                  <Sequence DisplayName="Get Input for Monthly Process" sap:VirtualizedContainerService.HintSize="483.2,804" sap2010:WorkflowViewState.IdRef="Sequence_107">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign DisplayName="Assign Todays output file for Monthly" sap:VirtualizedContainerService.HintSize="345,60" sap2010:WorkflowViewState.IdRef="Assign_38">
+                    <Assign DisplayName="Assign Todays output file for Monthly" sap:VirtualizedContainerService.HintSize="344.8,60" sap2010:WorkflowViewState.IdRef="Assign_38">
                       <Assign.To>
                         <OutArgument x:TypeArguments="x:String">[io_OutputFileMonthly]</OutArgument>
                       </Assign.To>
@@ -677,17 +676,11 @@
                         <InArgument x:TypeArguments="x:String">[in_Config("MasterFilePath").ToString+"Monthly"+"\"+in_Config("MasterFileName").ToString+"_Monthly_"+ Now.ToString("dd-MM-yyyy")+".xlsx"]</InArgument>
                       </Assign.Value>
                     </Assign>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateMasterOutputFile workflow Monthly" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Reusable Code\CreateMasterOutputFile.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateMasterOutputFile workflow Monthly" sap:VirtualizedContainerService.HintSize="344.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_23" UnSafe="False" WorkflowFileName="Reusable Code\CreateMasterOutputFile.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">
-                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                        </InArgument>
-                        <InOutArgument x:TypeArguments="x:String" x:Key="io_TodaysOutputFile">
-                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_OutputFileMonthly" />
-                        </InOutArgument>
-                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CustomerNamesDT">
-                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="CustomerNamesDT" />
-                        </OutArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_TodaysOutputFile">[io_OutputFileMonthly]</InOutArgument>
+                        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_CustomerNamesDT">[CustomerNamesDT]</OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateInputFolder workflow Monthly" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Reusable Code\CreateInputFolder.xaml">
@@ -699,40 +692,20 @@
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateTimesheetFolder workflow" sap:VirtualizedContainerService.HintSize="345,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="Reusable Code\CreateTimesheetFolder.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessType">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_ProcessType" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeSheetPath">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TimeSheetPath&quot;).ToString" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_PDFTimeSheetPath">
-                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_PDFTimeSheetPath" />
-                        </OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ProcessType">[io_ProcessType]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_TimeSheetPath">[in_Config("TimeSheetPath").ToString]</InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_PDFTimeSheetPath">[io_PDFTimeSheetPath]</OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Daily Section: Extract input records from SDMS web portal into input file saved in input folder." DisplayName="Invoke ExtractInput workflow for Monthly" sap:VirtualizedContainerService.HintSize="345,154" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_18" UnSafe="False" WorkflowFileName="SDMS\ExtractInputMonthly.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_InputExcelFolderPathMonthly">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InputFolderPathMonthly" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="x:String" x:Key="out_InputExcelFileMonthly">
-                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="InputExcelFileMonthly" />
-                        </OutArgument>
-                        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ProcessCounterMonthly">
-                          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_ProcessCounter" />
-                        </InOutArgument>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">
-                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_InputMonthly">
-                          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="InputMonthly" />
-                        </OutArgument>
-                        <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">
-                          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_ProcessType" />
-                        </InOutArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_PDFTimesheetFolderPath">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_PDFTimeSheetPath" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_InputExcelFolderPathMonthly">[InputFolderPathMonthly]</InArgument>
+                        <OutArgument x:TypeArguments="x:String" x:Key="out_InputExcelFileMonthly">[InputExcelFileMonthly]</OutArgument>
+                        <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ProcessCounterMonthly">[io_ProcessCounter]</InOutArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config1">[in_Config]</InArgument>
+                        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_InputMonthly">[InputMonthly]</OutArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[io_ProcessType]</InOutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_PDFTimesheetFolderPath">[io_PDFTimeSheetPath]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -743,7 +716,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:InvokeWorkflowFile>
                   </Sequence>
-                  <If sap2010:Annotation.AnnotationText="Read input file stored in input folder for the first time process runs for Monthly" Condition="[(io_dt_TransactionData is Nothing) and ( InputMonthly=True)]" DisplayName="Read Monthly input file" sap:VirtualizedContainerService.HintSize="484,304" sap2010:WorkflowViewState.IdRef="If_30">
+                  <If sap2010:Annotation.AnnotationText="Read input file stored in input folder for the first time process runs for Monthly" Condition="[(io_dt_TransactionData is Nothing) and ( InputMonthly=True)]" DisplayName="Read Monthly input file" sap:VirtualizedContainerService.HintSize="483.2,308" sap2010:WorkflowViewState.IdRef="If_30">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -752,7 +725,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <ui:ReadRange AddHeaders="True" DataTable="[io_dt_TransactionData]" DisplayName="Read Range - Input file for Monthly" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet1" WorkbookPath="[InputExcelFileMonthly]">
+                      <ui:ReadRange AddHeaders="True" DataTable="[io_dt_TransactionData]" DisplayName="Read Range - Input file for Monthly" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Sheet1" WorkbookPath="[InputExcelFileMonthly]">
                         <ui:ReadRange.Range>
                           <InArgument x:TypeArguments="x:String">
                             <Literal x:TypeArguments="x:String" Value="" />
@@ -786,7 +759,7 @@
         </If>
       </ui:InterruptibleWhile.Body>
     </ui:InterruptibleWhile>
-    <If Condition="[io_TransactionNumber &lt;= io_dt_TransactionData.Rows.Count]" DisplayName="If - new transaction is available" sap:VirtualizedContainerService.HintSize="2423,247" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[io_TransactionNumber &lt;= io_dt_TransactionData.Rows.Count]" DisplayName="If - new transaction is available" sap:VirtualizedContainerService.HintSize="2423.2,248.8" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -794,7 +767,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Assign DisplayName="Assign - Transaction Item" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+        <Assign DisplayName="Assign - Transaction Item" sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
           <Assign.To>
             <OutArgument x:TypeArguments="sd:DataRow">[out_TransactionItem]</OutArgument>
           </Assign.To>

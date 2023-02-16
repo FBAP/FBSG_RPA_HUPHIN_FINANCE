@@ -6,10 +6,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1200.8,7232.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1200.8,11938.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="74">
+    <scg:List x:TypeArguments="x:String" Capacity="39">
       <x:String>System.Activities.XamlIntegration</x:String>
       <x:String>System.Activities.Validation</x:String>
       <x:String>System.Activities</x:String>
@@ -52,7 +52,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="39">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -91,10 +91,9 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1211.2,7876.8" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="1211.2,11873.6" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="ScheduleFileExists" />
       <Variable x:TypeArguments="sd:DataTable" Name="FieldsToBeExtractedDT" />
@@ -107,7 +106,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="1169.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <TryCatch DisplayName="Try Catch - Shared drive paths" sap:VirtualizedContainerService.HintSize="1169.6,7394.4" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Catch - Shared drive paths" sap:VirtualizedContainerService.HintSize="1169.6,11256.8" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -115,16 +114,17 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="Check all initialization" sap:VirtualizedContainerService.HintSize="1132.8,7163.2" sap2010:WorkflowViewState.IdRef="Sequence_80">
+        <Sequence DisplayName="Check all initialization" sap:VirtualizedContainerService.HintSize="1132.8,11025.6" sap2010:WorkflowViewState.IdRef="Sequence_80">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Checking th shared drive accesses" sap:VirtualizedContainerService.HintSize="1091.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+          <Sequence DisplayName="Checking th shared drive accesses" sap:VirtualizedContainerService.HintSize="1091.2,1032.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -136,12 +136,12 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message - master file path" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Checking if master file path is accessible. The Path is: &quot;+in_Config(&quot;MasterFilePath&quot;).ToString]" />
-              <ui:FolderExistsX DisplayName="Folder Exists" Exists="[MasterFilePathAccess]" sap:VirtualizedContainerService.HintSize="433.6,134.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[in_Config(&quot;MasterFilePath&quot;).ToString]" />
-              <If Condition="[MasterFilePathAccess]" DisplayName="If master file path exists" sap:VirtualizedContainerService.HintSize="794.4,407.2" sap2010:WorkflowViewState.IdRef="If_2">
+              <ui:LogMessage DisplayName="Log Message - master file path" sap:VirtualizedContainerService.HintSize="794.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Checking if master file path is accessible. The Path is: &quot;+in_Config(&quot;MasterFilePath&quot;).ToString]" />
+              <ui:FolderExistsX DisplayName="Folder Exists" Exists="[MasterFilePathAccess]" sap:VirtualizedContainerService.HintSize="794.4,134.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[in_Config(&quot;MasterFilePath&quot;).ToString]" />
+              <If Condition="[Not MasterFilePathAccess]" DisplayName="If master file path exists" sap:VirtualizedContainerService.HintSize="794.4,407.2" sap2010:WorkflowViewState.IdRef="If_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -169,7 +169,7 @@
               </If>
             </Sequence>
           </Sequence>
-          <Sequence DisplayName="checking if all required columns exists" sap:VirtualizedContainerService.HintSize="1091.2,6635.2" sap2010:WorkflowViewState.IdRef="Sequence_22">
+          <Sequence DisplayName="checking if all required columns exists" sap:VirtualizedContainerService.HintSize="1091.2,8795.2" sap2010:WorkflowViewState.IdRef="Sequence_22">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,13 +177,30 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:LogMessage DisplayName="Log Message - checking if all required columns" sap:VirtualizedContainerService.HintSize="1049.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Checking if all columns exists in input master file.&quot;]" />
-            <ui:ReadRange AddHeaders="True" DataTable="[FieldsToBeExtractedDT]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="1049.6,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;SheetNameFieldsExtracted&quot;).ToString]" WorkbookPath="[in_Config(&quot;MasterFilePath&quot;).ToString+in_Config(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;]">
-              <ui:ReadRange.Range>
-                <InArgument x:TypeArguments="x:String">
-                  <Literal x:TypeArguments="x:String" Value="" />
-                </InArgument>
-              </ui:ReadRange.Range>
-            </ui:ReadRange>
+            <Assign DisplayName="Assign new dt" sap:VirtualizedContainerService.HintSize="1049.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[FieldsToBeExtractedDT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[new DataTable]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="1049.6,169.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[in_Config(&quot;MasterFilePath&quot;).ToString+in_Config(&quot;MasterFileName&quot;).ToString+&quot;.xlsx&quot;]">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <ui:ExcelReadRange AddHeaders="True" DataTable="[FieldsToBeExtractedDT]" DisplayName="Read Range Master file" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[in_Config(&quot;SheetNameFieldsExtracted&quot;).ToString]">
+                    <ui:ExcelReadRange.Range>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ui:ExcelReadRange.Range>
+                  </ui:ExcelReadRange>
+                </ActivityAction>
+              </ui:ExcelApplicationScope.Body>
+            </ui:ExcelApplicationScope>
             <If Condition="[FieldsToBeExtractedDT.Columns.Contains(&quot;DO Number&quot;)]" DisplayName="If DO number column exists" sap:VirtualizedContainerService.HintSize="1049.6,407.2" sap2010:WorkflowViewState.IdRef="If_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -496,6 +513,64 @@
                 </Sequence>
               </If.Else>
             </If>
+            <If Condition="[(FieldsToBeExtractedDT.Columns(20).ColumnName.TrimStart().TrimEnd().ToLower).Contains(&quot;do or timesheet file path&quot;)]" DisplayName="If DO or Timesheet File Path column exists" sap:VirtualizedContainerService.HintSize="1049.6,407.2" sap2010:WorkflowViewState.IdRef="If_25">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - DO or Timesheet File Path column exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_67" Level="Info" Message="[&quot;DO or Timesheet File Path column exists in master file.&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_82">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - DO or Timesheet File Path column doesn't exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_68" Level="Error" Message="[&quot;DO or Timesheet File Path does not exist in master file in U1 column. Please check it manually.&quot;]" />
+                  <Throw Exception="[new Exception(&quot;DO or Timesheet File Path column doesn't exist in input master file in U1 cell.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_22" />
+                </Sequence>
+              </If.Else>
+            </If>
+            <If Condition="[(FieldsToBeExtractedDT.Columns(21).ColumnName.TrimStart().TrimEnd().ToLower).Contains(&quot;monthly excel file path&quot;)]" DisplayName="If Monthly Excel File Path column exists" sap:VirtualizedContainerService.HintSize="1049.6,407.2" sap2010:WorkflowViewState.IdRef="If_26">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Monthly Excel File Path column exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_69" Level="Info" Message="[&quot;Monthly Excel File Path column exists in master file.&quot;]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - Monthly Excel File Path column doesn't exists" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_70" Level="Error" Message="[&quot;Monthly Excel File Path does not exist in master file in U1 column. Please check it manually.&quot;]" />
+                  <Throw Exception="[new Exception(&quot;Monthly Excel File Path column doesn't exist in input master file in U1 cell.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_23" />
+                </Sequence>
+              </If.Else>
+            </If>
             <If Condition="[FieldsToBeExtractedDT.Columns.Contains(&quot;Status Bot1&quot;)]" DisplayName="If Status column exists" sap:VirtualizedContainerService.HintSize="1049.6,1136.8" sap2010:WorkflowViewState.IdRef="If_23">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -545,7 +620,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="438.4,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_1" NewColumnName="Status Bot1" Range="[MasterExcel.Sheet(in_Config(&quot;SheetNameFieldsExtracted&quot;).ToString)]" RelativeColumnName="Signature" RelativePosition="After" />
+                                  <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="438.4,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_1" NewColumnName="Status Bot1" Range="[MasterExcel.Sheet(in_Config(&quot;SheetNameFieldsExtracted&quot;).ToString)]" RelativeColumnName="Monthly Excel File Path" RelativePosition="After" />
                                 </Sequence>
                               </ActivityAction>
                             </ueab:ExcelApplicationCard.Body>
@@ -563,10 +638,10 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[FieldsToBeExtractedDT.Columns.Contains(&quot;Comments&quot;)]" DisplayName="If Comments column exists" sap:VirtualizedContainerService.HintSize="1049.6,52.8" sap2010:WorkflowViewState.IdRef="If_24">
+            <If Condition="[FieldsToBeExtractedDT.Columns.Contains(&quot;Comments1&quot;)]" DisplayName="If Comments column exists" sap:VirtualizedContainerService.HintSize="1049.6,1136.8" sap2010:WorkflowViewState.IdRef="If_24">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -612,7 +687,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="438.4,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_2" NewColumnName="Comments" Range="[MasterExcel.Sheet(in_Config(&quot;SheetNameFieldsExtracted&quot;).ToString)]" RelativeColumnName="Status" RelativePosition="After" />
+                                  <ueab:InsertColumnX ColumnFormat="{x:Null}" DisplayName="Insert Column" HasHeaders="True" sap:VirtualizedContainerService.HintSize="438.4,210.4" sap2010:WorkflowViewState.IdRef="InsertColumnX_2" NewColumnName="Comments1" Range="[MasterExcel.Sheet(in_Config(&quot;SheetNameFieldsExtracted&quot;).ToString)]" RelativeColumnName="Status Bot1" RelativePosition="After" />
                                 </Sequence>
                               </ActivityAction>
                             </ueab:ExcelApplicationCard.Body>
@@ -632,10 +707,10 @@
             </If>
             <ui:LogMessage DisplayName="Log Message - checking if all required columns exists" sap:VirtualizedContainerService.HintSize="1049.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;All required columns exists in input master file.&quot;]" />
           </Sequence>
-          <Sequence DisplayName="Checking schedule details file is available" sap:VirtualizedContainerService.HintSize="794.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+          <Sequence DisplayName="Checking schedule details file is available" sap:VirtualizedContainerService.HintSize="1091.2,807.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -648,7 +723,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:FileExistsX>
-            <If Condition="[ScheduleFileExists]" DisplayName="If Schedule details file exists" sap:VirtualizedContainerService.HintSize="794.4,344.8" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[ScheduleFileExists]" DisplayName="If Schedule details file exists" sap:VirtualizedContainerService.HintSize="794.4,407.2" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -666,18 +741,19 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_15">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message - Schedule details file is not available" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Schedule details file is not available to proceed.&quot;]" />
+                  <ui:LogMessage DisplayName="Log Message - Schedule details file is not available" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Error" Message="[&quot;Schedule details file is not available to proceed.&quot;]" />
+                  <Throw DisplayName="Throw current exception" Exception="[new Exception(&quot;Schedule Details file is not available.&quot;)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_24" />
                 </Sequence>
               </If.Else>
             </If>
           </Sequence>
-          <Sequence DisplayName="Applications check - Excel" sap:VirtualizedContainerService.HintSize="794.4,68.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Applications check - Excel" sap:VirtualizedContainerService.HintSize="1091.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -689,7 +765,7 @@
             <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="333.6,134.4" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel" />
             <ui:LogMessage DisplayName="Log Message - &quot;Excel check completed.&quot;" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Excel check completed.&quot;]" />
           </Sequence>
-          <Sequence DisplayName="Applications check - Outlook" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence DisplayName="Applications check - Outlook" sap:VirtualizedContainerService.HintSize="1091.2,68.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -704,7 +780,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="839.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1136,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -715,23 +791,45 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Network drive not accessible" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <Sequence DisplayName="Network drive not accessible" sap:VirtualizedContainerService.HintSize="375.2,501.6" sap2010:WorkflowViewState.IdRef="Sequence_20">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="NoProcess" />
+              </Sequence.Variables>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <ui:LogMessage DisplayName="Log Message - Master File Path network drive is not accessible." sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;In Catch of Init all application sequence&quot;]" />
+              <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="x:String">[NoProcess]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="x:String">No Process</InArgument>
+                </Assign.Value>
+              </Assign>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendExceptionEmail workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Reusable Code\SendExceptionEmail.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config("ExceptionSubject").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config("ExceptionBody").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList">[in_Config("CCEmailList").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList1">[in_Config("RecipientsEmailList").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExScreenshotsFolderPath">[in_Config("ExScreenshotsFolderPath").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionOccured">[exception.Message]</InArgument>
+                  <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1">[NoProcess]</InOutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
               <Rethrow DisplayName="Rethrow current exception" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <TryCatch DisplayName="Try Catch - SDMS login" sap:VirtualizedContainerService.HintSize="872.8,52.8" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+    <TryCatch DisplayName="Try Catch - SDMS login" sap:VirtualizedContainerService.HintSize="1169.6,187.2" sap2010:WorkflowViewState.IdRef="TryCatch_6">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -759,7 +857,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="SDMS login check" sap:VirtualizedContainerService.HintSize="375.2,339.2" sap2010:WorkflowViewState.IdRef="Sequence_76">
+            <Sequence DisplayName="SDMS login check" sap:VirtualizedContainerService.HintSize="375.2,401.6" sap2010:WorkflowViewState.IdRef="Sequence_76">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -774,15 +872,15 @@
                   <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList1">[in_Config("RecipientsEmailList").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_ExScreenshotsFolderPath">[in_Config("ExScreenshotsFolderPath").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionOccured">[exception.Message]</InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Source">[exception.Source]</InArgument>
                   <InOutArgument x:TypeArguments="x:String" x:Key="io_ProcessType1" />
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
+              <Rethrow DisplayName="Rethrow the current exception" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log message (Initialize applications) sequence ended" sap:VirtualizedContainerService.HintSize="872.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[&quot;Opening applications sequence ended...&quot;]" />
+    <ui:LogMessage DisplayName="Log message (Initialize applications) sequence ended" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Trace" Message="[&quot;Opening applications sequence ended...&quot;]" />
   </Sequence>
 </Activity>

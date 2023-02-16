@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>674.4,1089.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>620,466.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SDMSLogin_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -90,10 +90,9 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Login to SDMS to extract input" DisplayName="SDMSLogin" sap:VirtualizedContainerService.HintSize="458.4,1024.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Login to SDMS to extract input" DisplayName="SDMSLogin" sap:VirtualizedContainerService.HintSize="241.6,176.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SDMSUsername" />
       <Variable x:TypeArguments="ss:SecureString" Name="SDMSPassword" />
@@ -105,18 +104,18 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:RetryScope DisplayName="Retry Scope for SDMS login" sap:VirtualizedContainerService.HintSize="416.8,900.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
+    <ui:RetryScope DisplayName="Retry Scope for SDMS login" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:05">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
-          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="375.2,652.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="475.2,2367.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message - SDMS Credentials" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Fetching credentials for SDMS login from orchestrator.&quot;]" />
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get the SDMS web portal credentials feeded in Uipath orchestrator assets folder." DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
+            <ui:LogMessage DisplayName="Log Message - SDMS Credentials" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Fetching credentials for SDMS login from orchestrator.&quot;]" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get the SDMS web portal credentials feeded in Uipath orchestrator assets folder." DisplayName="Invoke GetAppCredentials workflow" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <OutArgument x:TypeArguments="x:String" x:Key="out_SDMSUsername">[SDMSUsername]</OutArgument>
                 <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_SDMSPassword">[SDMSPassword]</OutArgument>
@@ -129,8 +128,8 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
-            <ui:LogMessage DisplayName="Log Message - login to SDMS" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Trying to login to SDMS Portal.&quot;]" />
-            <uix:NApplicationCard WebDriverMode="{x:Null}" sap2010:Annotation.AnnotationText="Login to SDMS page to enter credentails." AttachMode="ByInstance" CloseMode="Never" DisplayName="Open Chrome: Hup Hin SDMS" sap:VirtualizedContainerService.HintSize="333.6,96.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="6062892d-7a93-4d5b-8e94-2ad5fc4f2713" Version="V2">
+            <ui:LogMessage DisplayName="Log Message - login to SDMS" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Trying to login to SDMS Portal.&quot;]" />
+            <uix:NApplicationCard WebDriverMode="{x:Null}" sap2010:Annotation.AnnotationText="Login to SDMS page to enter credentails." AttachMode="ByInstance" CloseMode="Never" DisplayName="Open Chrome: Hup Hin SDMS" sap:VirtualizedContainerService.HintSize="433.6,1811.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="6062892d-7a93-4d5b-8e94-2ad5fc4f2713" Version="V2">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
@@ -258,14 +257,14 @@
                     </uix:NCheckState>
                     <uix:NCheckState Exists="{x:Null}" DisplayName="Check if save password popup exists" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="6062892d-7a93-4d5b-8e94-2ad5fc4f2713" Version="V1">
                       <uix:NCheckState.IfExists>
-                        <Sequence DisplayName="if save password popup exists" sap:VirtualizedContainerService.HintSize="376,381.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Sequence DisplayName="if save password popup exists" sap:VirtualizedContainerService.HintSize="375.2,384.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - if Save password popup appears" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Save Password popup appeared. Clicking on Never button.&quot;]" />
-                          <uix:NClick ClickType="Single" DisplayName="Click 'Never'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6062892d-7a93-4d5b-8e94-2ad5fc4f2713" Version="V1">
+                          <ui:LogMessage DisplayName="Log Message - if Save password popup appears" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Save Password popup appeared. Clicking on Never button.&quot;]" />
+                          <uix:NClick ClickType="Single" DisplayName="Click 'Never'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_2" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="6062892d-7a93-4d5b-8e94-2ad5fc4f2713" Version="V1">
                             <uix:NClick.Target>
                               <uix:TargetAnchorable DesignTimeRectangle="308, 324, 82, 41" ElementType="Button" FriendlyName="'Never'" FullSelectorArgument="&lt;ctrl name='Save password?' role='alert' /&gt;&lt;ctrl name='Never' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Save password?' role='alert' /&gt;&lt;ctrl name='Never' role='push button' automationid='' check:text='Never' /&gt;" Guid="26eb8b23-3b14-4e90-ba4c-7e39ba5a2ec2" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFYAAAAtCAYAAAA0s5z1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANeSURBVGhD7Zs9TyJBGMfvc/gl+AR2lnR2dHbXWVxBYXOFJjQWhsSCwuRiQYwNxSVUkFhoQYiNJJecnHLKRRZY3oIgC8n/nmdmVlheTBRHE31+yQRmZmfY/fHMs6vsfoFgBRFrCRFribliPW+IO6eOP9e3+F0sSXmisKMKuWJnk8yIHQyGuCrdot9/wGg0Mq3CItgRu2JnA88zrVNi2fr137KpCc+F3fmRGxB759SUfeFl3N/3VFpgAmI5X8jyfznDoU6jTEAsJ2NhOXyHIvaVEbGWELGWELGWELGWELGWELGWELGWeDOx+YMKVr5VED5soW/afJyMo/riF6bhA/DmYrkkisE/l0XsEjxG7Ba9bru4Me2MiF0CLbaG7HkVayRx42fX9CwQ6zaRiFUQovaVaAWbySZa3F6sq/HrqY7aTNPF0fbkF9bHZaaKCI3jeVe3q0iV/P/WdZGieVdidaSPHazyvmTG+/JavLnYPB5wmuD3VWTbum9GrOPiK9XD+y7y5Xtc5mqIcD3JMjtIcNTHXDh6a7X9BvVHUixogMIhz+8gnuvAKbdwtD/5eUYsCz3u6C/LAu8glmg3EKUDCyWa6kQWFDtCIUnbbtVR4KpipMebtpsUz+UgZczq8VWkWRzNvUlzbZ70dCdjxEfP+NN8sWZfLPE+YgmWwct85/xhSuw4omaLGV9ysU51LaqH9C717TZ09F3U5ozTRS95PxVMRLwF3k3s4wFu1ZCm0OMDD4ilfHnZ7qMVKOM8qXLqHsk00a8lE0bsTm56LBWPr0Y+vFiCIo9zZ4QlPYo1y95f2gvQ6YBOSnSS4tdT//c7s+zXkosGfwaxfj4lEWOxRLGOMNVD36s4yrVRKDaRzdQQP5k4e5f1l8LpxM/Vmh6ye3q+jWQD+WIb+fMGfuy5Jmd/CrGE10Kcz/KTYkl465eLKEWyutyiEo5RBJcGpp8xgtS4qd/nvC6yBw7C5nIrpC7XWuYK4IOJ/WyIWEuIWEuIWEuIWEuIWEuIWEuIWEuIWEuIWEvMFSu3cS7Hwts4K3Lj8VKoG4+rc2485tu8fePC82F3w6Fe8QGxzICfQyj9U/Y5tIWnYUfdXg9XlEYnn5yZEct4nqceR7oqlVUylrK4sCNe/tNBOFessDwi1grAf+ywBXA4PJVFAAAAAElFTkSuQmCC" InformativeScreenshot="ff2ff5905e7bc986adfa020c172fc27f.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Save password?' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Visibility="Interactive" />
                             </uix:NClick.Target>
@@ -273,13 +272,13 @@
                         </Sequence>
                       </uix:NCheckState.IfExists>
                       <uix:NCheckState.IfNotExists>
-                        <Sequence DisplayName="if popup doesnt exists" sap:VirtualizedContainerService.HintSize="376,185.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <Sequence DisplayName="if popup doesnt exists" sap:VirtualizedContainerService.HintSize="375.2,187.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - Save password popup didn't appear" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Save Password popup didn't appear.&quot;]" />
+                          <ui:LogMessage DisplayName="Log Message - Save password popup didn't appear" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Save Password popup didn't appear.&quot;]" />
                         </Sequence>
                       </uix:NCheckState.IfNotExists>
                       <uix:NCheckState.Target>
@@ -294,7 +293,7 @@
                     </uix:NCheckState>
                     <uix:NCheckState Exists="{x:Null}" DisplayName="Check if Logged in successfully" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="6062892d-7a93-4d5b-8e94-2ad5fc4f2713" Version="V1">
                       <uix:NCheckState.IfExists>
-                        <Sequence DisplayName="Operations tab appears" sap:VirtualizedContainerService.HintSize="375.2,285.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <Sequence DisplayName="Operations tab appears" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -302,7 +301,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:LogMessage DisplayName="Log Message - Login successful" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Login to SDMS is successful.&quot;]" />
-                          <Assign DisplayName="Assign - Login boolean to true" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign DisplayName="Assign - Login boolean to true" sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_1">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Boolean">[LoginSuccess]</OutArgument>
                             </Assign.To>
@@ -313,15 +312,15 @@
                         </Sequence>
                       </uix:NCheckState.IfExists>
                       <uix:NCheckState.IfNotExists>
-                        <Sequence DisplayName="Operations tab doesn't appears" sap:VirtualizedContainerService.HintSize="376,286" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <Sequence DisplayName="Operations tab doesn't appears" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="Log Message - Login to SDMS is not successful" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Error" Message="[&quot;Login to SDMS is not successful. Please re-run the bot.&quot;]" />
-                          <Assign DisplayName="Assign - Login boolean" sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <ui:LogMessage DisplayName="Log Message - Login to SDMS is not successful" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Error" Message="[&quot;Login to SDMS is not successful. Please re-run the bot.&quot;]" />
+                          <Assign DisplayName="Assign - Login boolean" sap:VirtualizedContainerService.HintSize="333.6,61.6" sap2010:WorkflowViewState.IdRef="Assign_2">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Boolean">[LoginSuccess]</OutArgument>
                             </Assign.To>
@@ -356,7 +355,7 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -371,7 +370,7 @@
       </ui:RetryScope.Condition>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
