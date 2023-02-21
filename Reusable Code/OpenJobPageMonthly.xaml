@@ -1,12 +1,20 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Open" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Open" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_SDMSLoginURL" Type="InArgument(x:String)" />
     <x:Property Name="in_DelayAfterMedium" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RetryNumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DelayLong" Type="InArgument(x:Int32)" />
   </x:Members>
+  <this:Open.in_RetryNumber>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Open.in_RetryNumber>
+  <this:Open.in_DelayLong>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Open.in_DelayLong>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>992.8,1712</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>992.8,1743.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Open_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -57,7 +65,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -94,21 +102,20 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Open" sap:VirtualizedContainerService.HintSize="1003.2,1647.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This will retry opening the Job Page for Monthly processes." DisplayName="Open" sap:VirtualizedContainerService.HintSize="1003.2,1678.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Name="DeliveryOrderPageSucess" />
-      <Variable x:TypeArguments="s:DateTime" Name="StartDate" />
-      <Variable x:TypeArguments="x:String" Name="ConvertedStartDate" />
       <Variable x:TypeArguments="x:Boolean" Name="JobPageSuccess" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:RetryScope DisplayName="Retry Scope to check if jobs page opened" sap:VirtualizedContainerService.HintSize="961.6,1554.4" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="3" RetryInterval="00:00:05">
+    <ui:RetryScope DisplayName="Retry Scope to check if jobs page opened" sap:VirtualizedContainerService.HintSize="961.6,1554.4" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_RetryNumber]" RetryInterval="00:00:05">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Action 1" sap:VirtualizedContainerService.HintSize="920,1306.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -151,7 +158,7 @@
                         </uix:TargetAnchorable>
                       </uix:NClick.Target>
                     </uix:NClick>
-                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check if 'Delivery Orders' page is opened" sap:VirtualizedContainerService.HintSize="803.2,507.2" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="b4ec8c3c-4a8c-458a-b477-0115bf2088a3" Timeout="30" Version="V1">
+                    <uix:NCheckState Exists="{x:Null}" DisplayName="Check if 'Delivery Orders' page is opened" sap:VirtualizedContainerService.HintSize="803.2,507.2" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="b4ec8c3c-4a8c-458a-b477-0115bf2088a3" Timeout="[in_DelayLong]" Version="V1">
                       <uix:NCheckState.IfExists>
                         <Sequence DisplayName="if page is opened" sap:VirtualizedContainerService.HintSize="375.2,288.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
                           <sap:WorkflowViewStateService.ViewState>
