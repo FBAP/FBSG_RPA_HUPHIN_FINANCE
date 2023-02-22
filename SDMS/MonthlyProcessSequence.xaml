@@ -10,10 +10,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>812,5633.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>695.2,5765.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DailyProcessSequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="42">
+    <scg:List x:TypeArguments="x:String" Capacity="43">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -56,6 +56,7 @@
       <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -96,9 +97,10 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Processing steps for Monthly process like fetching deatils from SDMS portal and entering them to output file." DisplayName="MonthlyProcessSequence" sap:VirtualizedContainerService.HintSize="822.4,5568.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Processing steps for Monthly process like fetching deatils from SDMS portal and entering them to output file." DisplayName="MonthlyProcessSequence" sap:VirtualizedContainerService.HintSize="705.6,5700.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="JobSiteAddress" />
       <Variable x:TypeArguments="x:String" Name="ItemGroup" />
@@ -110,6 +112,12 @@
       <Variable x:TypeArguments="s:String[]" Name="TimeSheetFolder" />
       <Variable x:TypeArguments="x:String" Name="TimesheetExcelFile" />
       <Variable x:TypeArguments="x:String" Name="JobNumber" />
+      <Variable x:TypeArguments="x:String" Name="StartJobTime" />
+      <Variable x:TypeArguments="x:String" Name="EndJobTime" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_JobSite" />
+      <Variable x:TypeArguments="x:String" Name="TimeSheetMonthlyStr" />
+      <Variable x:TypeArguments="x:Int32" Name="RowIndex" />
+      <Variable x:TypeArguments="x:Int32" Name="Counter" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -117,7 +125,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch for Monthly" sap:VirtualizedContainerService.HintSize="780.8,5444.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch for Monthly" sap:VirtualizedContainerService.HintSize="664,5576.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -125,23 +133,20 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Open delivery order page" sap:VirtualizedContainerService.HintSize="744,5213.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="fe9922ab-8734-489e-a259-7419410adaec" Version="V2">
+        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Open delivery order page" sap:VirtualizedContainerService.HintSize="627.2,5345.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="fe9922ab-8734-489e-a259-7419410adaec" Version="V2">
           <uix:NApplicationCard.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do these steps" sap:VirtualizedContainerService.HintSize="710.4,4996.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <Sequence DisplayName="Do these steps" sap:VirtualizedContainerService.HintSize="593.6,5128.8" sap2010:WorkflowViewState.IdRef="Sequence_29">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <uix:NGoToUrl DisplayName="Go To delivery orders URL" sap:VirtualizedContainerService.HintSize="668.8,82.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="[in_TransactionItem1(&quot;URL&quot;).tostring]" Version="V1" />
-                <Sequence DisplayName="Fetch Info Tab details" sap:VirtualizedContainerService.HintSize="668.8,1138.4" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="sd:DataTable" Name="dt_JobSite" />
-                  </Sequence.Variables>
+                <uix:NGoToUrl DisplayName="Go To delivery orders URL" sap:VirtualizedContainerService.HintSize="552,82.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="[in_TransactionItem1(&quot;URL&quot;).tostring]" Version="V1" />
+                <Sequence DisplayName="Fetch Info Tab details" sap:VirtualizedContainerService.HintSize="552,1799.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -176,6 +181,36 @@
                     </uix:NGetText.Target>
                     <uix:NGetText.Text>
                       <OutArgument x:TypeArguments="x:String">[CustomerName]</OutArgument>
+                    </uix:NGetText.Text>
+                  </uix:NGetText>
+                  <ui:LogMessage DisplayName="Log Message - Fetch Start Time 1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_51" Level="Info" Message="[&quot;Fetching Start Time 1...&quot;]" />
+                  <uix:NGetText DisplayName="Get Text 'Submitted Start 1'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NGetText_20" ScopeIdentifier="fe9922ab-8734-489e-a259-7419410adaec" Version="V1">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://hhtc.insightservicing.sg/job/viewJob/28133" DesignTimeRectangle="1143, 610, 339, 46" ElementType="Text" FriendlyName="'01/01/2023 08:00'" FullSelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' /&gt;" Guid="add678de-109d-4b63-803d-748416c6ad82" InformativeScreenshot="d7bd95a17a744b37753061129fb0096a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Hup Hin SDMS' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="843, 610, 300, 46" ElementType="Text" FriendlyName="'Scheduled Start'" FullSelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl type='' tag='TH' class='' aaname='Scheduled  Start  Date /  Time 1' check:innerText='Scheduled Start Date / Time 1' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                    <uix:NGetText.Text>
+                      <OutArgument x:TypeArguments="x:String">[StartJobTime]</OutArgument>
+                    </uix:NGetText.Text>
+                  </uix:NGetText>
+                  <ui:LogMessage DisplayName="Log Message - Fetch End Time 1" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info" Message="[&quot;Fetching End Time 1...&quot;]" />
+                  <uix:NGetText DisplayName="Get Text 'Submitted End 1'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NGetText_21" ScopeIdentifier="fe9922ab-8734-489e-a259-7419410adaec" Version="V1">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://hhtc.insightservicing.sg/job/viewJob/28133" DesignTimeRectangle="1143, 656, 339, 46" ElementType="Text" FriendlyName="'31/01/2023 17:00'" FullSelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' /&gt;" Guid="65fe5b3c-690a-44e5-b50e-ee027c4a2e4a" InformativeScreenshot="28f2601602508d9fc867c49bec258dde.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Hup Hin SDMS' /&gt;" SearchSteps="FuzzySelector" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="843, 656, 300, 46" ElementType="Text" FriendlyName="'Scheduled End'" FullSelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl id='jobInfo' tag='TABLE' /&gt;&lt;webctrl type='' tag='TH' class='' aaname='Scheduled  End  Date /  Time  1' check:innerText='Scheduled End Date / Time 1' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                    <uix:NGetText.Text>
+                      <OutArgument x:TypeArguments="x:String">[EndJobTime]</OutArgument>
                     </uix:NGetText.Text>
                   </uix:NGetText>
                   <ui:LogMessage DisplayName="Log Message - Fetch Job Site address" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Fetching Job Site Address...&quot;]" />
@@ -213,7 +248,7 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Fetch Asstes Tab details" sap:VirtualizedContainerService.HintSize="668.8,68.8" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <Sequence DisplayName="Fetch Asstes Tab details" sap:VirtualizedContainerService.HintSize="552,68.8" sap2010:WorkflowViewState.IdRef="Sequence_26">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -281,7 +316,7 @@
                     </uix:NGetText.Text>
                   </uix:NGetText>
                 </Sequence>
-                <Sequence DisplayName="Fetch all the timings" sap:VirtualizedContainerService.HintSize="668.8,937.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                <Sequence DisplayName="Fetch all the timings" sap:VirtualizedContainerService.HintSize="552,1324" sap2010:WorkflowViewState.IdRef="Sequence_30">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -300,13 +335,13 @@
                       <InArgument x:TypeArguments="x:String">[in_ExcelTimeSheetPath+"\"+in_TransactionItem1("Job Number").tostring+".xlsx"]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope  - for creating timesheet file" sap:VirtualizedContainerService.HintSize="433.6,544" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[TimesheetExcelFile]">
+                  <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope  - for creating timesheet file" sap:VirtualizedContainerService.HintSize="433.6,588.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[TimesheetExcelFile]">
                     <ui:ExcelApplicationScope.Body>
                       <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Do #1" sap:VirtualizedContainerService.HintSize="375.2,434.4" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,439.2" sap2010:WorkflowViewState.IdRef="Sequence_47">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="TimeSheetMonthlyStr" />
                           </Sequence.Variables>
@@ -315,90 +350,353 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:ExcelWriteRange AddHeaders="True" DataTable="[dt_TimesheetMonthly]" DisplayName="Write Range for monthly" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
-                          <ui:OutputDataTable DataTable="[dt_TimesheetMonthly]" DisplayName="Output Data Table to str" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[TimeSheetMonthlyStr]" />
-                          <ui:LogMessage DisplayName="Log Message - timesheet" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[TimeSheetMonthlyStr]" />
+                          <ui:LogMessage DisplayName="Log Message - File Created" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_55" Level="Info" Message="[&quot;Timesheet File is created&quot;]" />
+                          <ui:OutputDataTable DataTable="[dt_TimesheetMonthly]" DisplayName="Output Data Table to str" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="OutputDataTable_3" Text="[TimeSheetMonthlyStr]" />
+                          <ui:LogMessage DisplayName="Log Message - timesheet" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_54" Level="Info" Message="[TimeSheetMonthlyStr]" />
                         </Sequence>
                       </ActivityAction>
                     </ui:ExcelApplicationScope.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
                   </ui:ExcelApplicationScope>
-                </Sequence>
-                <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="668.8,2515.2" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
-                  <ueab:ExcelProcessScopeX.Body>
-                    <ActivityAction x:TypeArguments="ui:IExcelProcess">
-                      <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
-                      </ActivityAction.Argument>
-                      <Sequence DisplayName="Do - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="635.2,2428.8" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                  <ui:WriteRange AddHeaders="True" DataTable="[dt_TimesheetMonthly]" DisplayName="Write Range Workbook timesheet" sap:VirtualizedContainerService.HintSize="433.6,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="[TimesheetExcelFile]">
+                    <ui:WriteRange.StartingCell>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </ui:WriteRange.StartingCell>
+                  </ui:WriteRange>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,145.6" sap2010:WorkflowViewState.IdRef="Sequence_48">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="593.6,2336" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" WorkbookPath="[io_OutputFileMonthly]">
-                          <ueab:ExcelApplicationCard.Body>
-                            <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope  - for creating timesheet file" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[TimesheetExcelFile]">
+                          <ui:ExcelApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                               <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="OutputMasterExcel" />
+                                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="560,2066.4" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                              <Sequence DisplayName="Do #1" sap:VirtualizedContainerService.HintSize="476.8,1682.4" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;J&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Job Number" sap:VirtualizedContainerService.HintSize="518.4,160" sap2010:WorkflowViewState.IdRef="WriteCellX_23" Value="[JobNumber]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;K&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Customer Name" sap:VirtualizedContainerService.HintSize="518.4,160" sap2010:WorkflowViewState.IdRef="WriteCellX_14" Value="[CustomerName]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;L&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Item Group" sap:VirtualizedContainerService.HintSize="518.4,160" sap2010:WorkflowViewState.IdRef="WriteCellX_15" Value="[ItemGroup]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;M&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Item Serial" sap:VirtualizedContainerService.HintSize="518.4,160" sap2010:WorkflowViewState.IdRef="WriteCellX_17" Value="[ItemSerial]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;N&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Job Type" sap:VirtualizedContainerService.HintSize="518.4,160" sap2010:WorkflowViewState.IdRef="WriteCellX_16" Value="[JobType]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;O&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Site Address" sap:VirtualizedContainerService.HintSize="518.4,160" sap2010:WorkflowViewState.IdRef="WriteCellX_19" Value="[JobSiteAddress]" />
-                                <Assign DisplayName="Assign TimesheetFolder" sap:VirtualizedContainerService.HintSize="518.4,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="s:String[]">[TimeSheetFolder]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles( in_PDFTimeSheetPath1, "*.pdf")]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each timesheet file path" sap:VirtualizedContainerService.HintSize="518.4,473.6" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[TimeSheetFolder]">
-                                  <ui:ForEach.Body>
-                                    <ActivityAction x:TypeArguments="x:String">
+                                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="[Counter]" DataTable="[dt_TimesheetMonthly]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="435.2,908.8" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                                  <ui:ForEachRow.Body>
+                                    <ActivityAction x:TypeArguments="sd:DataRow">
                                       <ActivityAction.Argument>
-                                        <DelegateInArgument x:TypeArguments="x:String" Name="PDFFile" />
+                                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                       </ActivityAction.Argument>
-                                      <If Condition="[PDFFile.ToString.Contains( in_TransactionItem1(&quot;Job Number&quot;).ToString)]" DisplayName="If customer name matches" sap:VirtualizedContainerService.HintSize="483.2,348.8" sap2010:WorkflowViewState.IdRef="If_2">
-                                        <If.Then>
-                                          <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;U&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Timesheet Path" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_18" Value="[PDFFile]" />
-                                        </If.Then>
-                                        <If.Else>
-                                          <Sequence DisplayName="Timesheet PDF Not found" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_34">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </Sequence>
-                                        </If.Else>
-                                      </If>
+                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,792.8" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Assign DisplayName="Assign RowIndex" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Int32">[RowIndex]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Int32">[Counter+1]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <ui:ExcelWriteCell Cell="[&quot;A&quot;+ RowIndex.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_12" SheetName="Sheet1" Text="[&quot;'&quot;+ CurrentRow(&quot;Start Time 1&quot;).ToString]" />
+                                        <ui:ExcelWriteCell Cell="[&quot;B&quot;+ RowIndex.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_13" SheetName="Sheet1" Text="[&quot;'&quot;+ CurrentRow(&quot;End Time 1&quot;).ToString]" />
+                                        <ui:ExcelWriteCell Cell="[&quot;C&quot;+ RowIndex.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_14" SheetName="Sheet1" Text="[CurrentRow(&quot;Lunch Signature&quot;).ToString]" />
+                                        <ui:ExcelWriteCell Cell="[&quot;D&quot;+ RowIndex.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_15" SheetName="Sheet1" Text="[&quot;'&quot;+ CurrentRow(&quot;Start Time 2&quot;).ToString]" />
+                                        <ui:ExcelWriteCell Cell="[&quot;E&quot;+ RowIndex.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_16" SheetName="Sheet1" Text="[&quot;'&quot;+ CurrentRow(&quot;End Time 2&quot;).ToString]" />
+                                      </Sequence>
                                     </ActivityAction>
-                                  </ui:ForEach.Body>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:ForEach>
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;V&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Excel timesheet" sap:VirtualizedContainerService.HintSize="518.4,160" sap2010:WorkflowViewState.IdRef="WriteCellX_22" Value="[TimesheetExcelFile]" />
+                                  </ui:ForEachRow.Body>
+                                </ui:ForEachRow>
+                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="435.2,259.2" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                                  <ui:CommentOut.Body>
+                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:ExcelWriteRange AddHeaders="True" DataTable="[dt_TimesheetMonthly]" DisplayName="Write Range for monthly" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Sheet1" StartingCell="A1" />
+                                    </Sequence>
+                                  </ui:CommentOut.Body>
+                                </ui:CommentOut>
+                                <ui:ExcelWriteRange AddHeaders="False" DataTable="[dt_TimesheetMonthly]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="435.2,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_3" SheetName="Sheet1" StartingCell="A1" />
+                                <ui:OutputDataTable DataTable="[dt_TimesheetMonthly]" DisplayName="Output Data Table to str" sap:VirtualizedContainerService.HintSize="435.2,80.8" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[TimeSheetMonthlyStr]" />
+                                <ui:LogMessage DisplayName="Log Message - timesheet" sap:VirtualizedContainerService.HintSize="435.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_53" Level="Info" Message="[TimeSheetMonthlyStr]" />
                               </Sequence>
                             </ActivityAction>
-                          </ueab:ExcelApplicationCard.Body>
-                        </ueab:ExcelApplicationCard>
+                          </ui:ExcelApplicationScope.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ExcelApplicationScope>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="241.6,145.6" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_3">
+                          <ueab:ExcelProcessScopeX.Body>
+                            <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="555.2,1227.2" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="513.6,1134.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" WorkbookPath="[TimesheetExcelFile]">
+                                  <ueab:ExcelApplicationCard.Body>
+                                    <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="TimeSheetExcel" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="480,864.8" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ueab:FormatRangeX DisplayName="Format Cells - Start Date 1 and End Date 1" sap:VirtualizedContainerService.HintSize="438.4,139.2" sap2010:WorkflowViewState.IdRef="FormatRangeX_1" Range="[TimeSheetExcel.Sheet(&quot;Sheet1&quot;). Range(&quot;A2:B100&quot;)]">
+                                          <ueab:FormatRangeX.Alignment>
+                                            <ui:AlignmentOptions HorizontalAlignment="xlHAlignGeneral" VerticalAlignment="xlVAlignBottom" WrapText="False" />
+                                          </ueab:FormatRangeX.Alignment>
+                                          <ueab:FormatRangeX.Font>
+                                            <ui:FontOptions Color="Black" FillColor="Transparent" FontFamilyName="Calibri" Size="11" Style="Regular" />
+                                          </ueab:FormatRangeX.Font>
+                                          <ueab:FormatRangeX.Format>
+                                            <ueab:CustomFormat FormatAsString="dd/mm/yyyy hh:mm" />
+                                          </ueab:FormatRangeX.Format>
+                                        </ueab:FormatRangeX>
+                                        <ueab:FormatRangeX DisplayName="Format Cells - Start Date 2 and End Date 2" sap:VirtualizedContainerService.HintSize="438.4,139.2" sap2010:WorkflowViewState.IdRef="FormatRangeX_2" Range="[TimeSheetExcel.Sheet(&quot;Sheet1&quot;). Range(&quot;D2:E100&quot;)]">
+                                          <ueab:FormatRangeX.Alignment>
+                                            <ui:AlignmentOptions HorizontalAlignment="xlHAlignGeneral" VerticalAlignment="xlVAlignBottom" WrapText="False" />
+                                          </ueab:FormatRangeX.Alignment>
+                                          <ueab:FormatRangeX.Font>
+                                            <ui:FontOptions Color="Black" FillColor="Transparent" FontFamilyName="Calibri" Size="11" Style="Regular" />
+                                          </ueab:FormatRangeX.Font>
+                                          <ueab:FormatRangeX.Format>
+                                            <ueab:CustomFormat FormatAsString="dd/mm/yyyy hh:mm" />
+                                          </ueab:FormatRangeX.Format>
+                                        </ueab:FormatRangeX>
+                                        <ueab:WriteRangeX Destination="[TimeSheetExcel.Sheet(&quot;Sheet1&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="438.4,160" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False" Source="[dt_TimesheetMonthly]" />
+                                        <ui:OutputDataTable DataTable="[dt_TimesheetMonthly]" DisplayName="Output Data Table to str" sap:VirtualizedContainerService.HintSize="438.4,80.8" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[TimeSheetMonthlyStr]" />
+                                        <ui:LogMessage DisplayName="Log Message - timesheet" sap:VirtualizedContainerService.HintSize="438.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_49" Level="Info" Message="[TimeSheetMonthlyStr]" />
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </ueab:ExcelApplicationCard.Body>
+                                </ueab:ExcelApplicationCard>
+                              </Sequence>
+                            </ActivityAction>
+                          </ueab:ExcelProcessScopeX.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ueab:ExcelProcessScopeX>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                </Sequence>
+                <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="552,1507.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[io_OutputFileMonthly]">
+                  <ui:ExcelApplicationScope.Body>
+                    <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,1397.6" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ExcelWriteCell Cell="[&quot;J&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Joib number" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[JobNumber]" />
+                        <ui:ExcelWriteCell Cell="[&quot;K&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Customer Name" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[CustomerName]" />
+                        <ui:ExcelWriteCell Cell="[&quot;L&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Item Group" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[ItemGroup]" />
+                        <ui:ExcelWriteCell Cell="[&quot;M&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Item Serial" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[ItemSerial]" />
+                        <ui:ExcelWriteCell Cell="[&quot;N&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Job Type" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[JobType]" />
+                        <ui:ExcelWriteCell Cell="[&quot;O&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Job site address" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[JobSiteAddress]" />
+                        <ui:ExcelWriteCell Cell="[&quot;P&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Start Time 1" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[&quot;'&quot;+ StartJobTime]" />
+                        <ui:ExcelWriteCell Cell="[&quot;Q&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - End Time 1" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_8" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[&quot;'&quot;+ EndJobTime]" />
+                        <Assign DisplayName="Assign TimesheetFolder" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="s:String[]">[TimeSheetFolder]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles( in_PDFTimeSheetPath1, "*.pdf")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each timesheet file path" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[TimeSheetFolder]">
+                          <ui:ForEach.Body>
+                            <ActivityAction x:TypeArguments="x:String">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:String" Name="PDFFile" />
+                              </ActivityAction.Argument>
+                              <If Condition="[PDFFile.ToString.Contains( in_TransactionItem1(&quot;Job Number&quot;).ToString)]" DisplayName="If customer name matches" sap:VirtualizedContainerService.HintSize="483.2,276.8" sap2010:WorkflowViewState.IdRef="If_3">
+                                <If.Then>
+                                  <ui:ExcelWriteCell Cell="[&quot;U&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - PDF Fielpath" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[PDFFile]" />
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence DisplayName="Timesheet PDF Not found" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </ActivityAction>
+                          </ui:ForEach.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ForEach>
+                        <ui:ExcelWriteCell Cell="[&quot;V&quot;+ (io_TransactionNumber1+1).ToString]" DisplayName="Write Cell - Excel file path" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" Text="[TimesheetExcelFile]" />
                       </Sequence>
                     </ActivityAction>
-                  </ueab:ExcelProcessScopeX.Body>
-                </ueab:ExcelProcessScopeX>
+                  </ui:ExcelApplicationScope.Body>
+                </ui:ExcelApplicationScope>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="552,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="625.6,2587.2" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="584,2494.4" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
+                        <ueab:ExcelProcessScopeX.Body>
+                          <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Do - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="550.4,2408" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="508.8,2315.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" WorkbookPath="[io_OutputFileMonthly]">
+                                <ueab:ExcelApplicationCard.Body>
+                                  <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="OutputMasterExcel" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,2045.6" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;J&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Job Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_23" Value="[JobNumber]" />
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;K&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Customer Name" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_14" Value="[CustomerName]" />
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;L&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Item Group" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_15" Value="[ItemGroup]" />
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;M&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Item Serial" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_17" Value="[ItemSerial]" />
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;N&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Job Type" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_16" Value="[JobType]" />
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;O&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Site Address" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_19" Value="[JobSiteAddress]" />
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;P&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for before lunch Start time" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_24" Value="[&quot;'&quot;+StartJobTime]" />
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;Q&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for before lunch end time" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_25" Value="[&quot;'&quot;+EndJobTime]" />
+                                      <Assign DisplayName="Assign TimesheetFolder" sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="s:String[]">[TimeSheetFolder]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles( in_PDFTimeSheetPath1, "*.pdf")]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each timesheet file path" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[TimeSheetFolder]">
+                                        <ui:ForEach.Body>
+                                          <ActivityAction x:TypeArguments="x:String">
+                                            <ActivityAction.Argument>
+                                              <DelegateInArgument x:TypeArguments="x:String" Name="PDFFile" />
+                                            </ActivityAction.Argument>
+                                            <If Condition="[PDFFile.ToString.Contains( in_TransactionItem1(&quot;Job Number&quot;).ToString)]" DisplayName="If customer name matches" sap:VirtualizedContainerService.HintSize="483.2,348.8" sap2010:WorkflowViewState.IdRef="If_2">
+                                              <If.Then>
+                                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;U&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Timesheet Path" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_18" Value="[PDFFile]" />
+                                              </If.Then>
+                                              <If.Else>
+                                                <Sequence DisplayName="Timesheet PDF Not found" sap:VirtualizedContainerService.HintSize="200,84.8" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Sequence>
+                                              </If.Else>
+                                            </If>
+                                          </ActivityAction>
+                                        </ui:ForEach.Body>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ForEach>
+                                      <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;V&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Excel timesheet" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_22" Value="[TimesheetExcelFile]" />
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ueab:ExcelApplicationCard.Body>
+                              </ueab:ExcelApplicationCard>
+                            </Sequence>
+                          </ActivityAction>
+                        </ueab:ExcelProcessScopeX.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ueab:ExcelProcessScopeX>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
               </Sequence>
             </ActivityAction>
           </uix:NApplicationCard.Body>
@@ -414,7 +712,7 @@
         </uix:NApplicationCard>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="662.4,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="630.4,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>

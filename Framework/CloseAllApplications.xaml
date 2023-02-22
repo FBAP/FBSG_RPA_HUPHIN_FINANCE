@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>676,971.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>660.8,971.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CloseAllApplications_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -81,6 +81,9 @@
         </InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayShort">
           <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="Cint(in_Config(&quot;DelayShort&quot;))" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt( in_Config(&quot;RetryNumber&quot;))" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
