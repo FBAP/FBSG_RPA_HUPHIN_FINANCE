@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>662.4,804.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>904,1518.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateDOFolder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -68,16 +68,17 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml will create a folder for saving timesheets for Monthly process." DisplayName="Create Timeshe folder for saving excel format of timesheet" sap:VirtualizedContainerService.HintSize="475.2,740" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml will create a folder for saving timesheets for Monthly process." DisplayName="Create Timeshe folder for saving excel format of timesheet" sap:VirtualizedContainerService.HintSize="914.4,1453.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch of Timeseet folder creation" sap:VirtualizedContainerService.HintSize="433.6,616" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch of Timeseet folder creation" sap:VirtualizedContainerService.HintSize="872.8,1329.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="Create folder for saving excel Timesheets" sap:VirtualizedContainerService.HintSize="836,1098.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <Sequence.Variables>
@@ -95,7 +96,7 @@
               <OutArgument x:TypeArguments="x:String">[out_ExcelTimeSheetPath]</OutArgument>
             </Assign.To>
             <Assign.Value>
-              <InArgument x:TypeArguments="x:String">[in_TimeSheetPath+ "ExcelTimesheets"+"\"+now.ToString("dd-MM-yyyy")]</InArgument>
+              <InArgument x:TypeArguments="x:String">[in_TimeSheetPath+now.ToString("dd-MM-yyyy")]</InArgument>
             </Assign.Value>
           </Assign>
           <ui:FolderExistsX DisplayName="check if Folder Exists" Exists="[TmesheetExcelFolderExists]" sap:VirtualizedContainerService.HintSize="794.4,134.4" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[out_ExcelTimeSheetPath]" />
@@ -132,10 +133,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,451.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="839.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>

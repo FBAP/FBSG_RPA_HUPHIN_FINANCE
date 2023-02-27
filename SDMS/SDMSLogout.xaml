@@ -1,13 +1,14 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="SDMSLogout" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_SDMSLoginURL" Type="InArgument(x:String)" />
-    <x:Property Name="in_DelayShort" Type="InArgument(x:Int32)" />
     <x:Property Name="in_RetryNumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RetryIntervalMedium" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_DelayMedium" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>676,1615.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>698.4,672</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SDMSLogout_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -47,7 +48,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -82,14 +83,14 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Logout from the SDMS web portal." DisplayName="SDMS Logout Sequence" sap:VirtualizedContainerService.HintSize="686.4,1550.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Logout from the SDMS web portal." DisplayName="SDMS Logout Sequence" sap:VirtualizedContainerService.HintSize="475.2,607.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catchfor SDMS logout" sap:VirtualizedContainerService.HintSize="644.8,1426.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catchfor SDMS logout" sap:VirtualizedContainerService.HintSize="433.6,483.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="LogoutSuccess" />
       </TryCatch.Variables>
@@ -100,7 +101,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="SDMS Logout" sap:VirtualizedContainerService.HintSize="608,1195.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="SDMS Logout" sap:VirtualizedContainerService.HintSize="608,1801.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:Boolean" Name="LoggedIn" />
           </Sequence.Variables>
@@ -110,10 +111,10 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:LogMessage DisplayName="Log Message - Inside SDMS Logout" sap:VirtualizedContainerService.HintSize="566.4,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Inside logout SDMS sequence.&quot;]" />
-          <ui:RetryScope DisplayName="Retry Scope for Logout" sap:VirtualizedContainerService.HintSize="566.4,836.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_RetryNumber]" RetryInterval="00:00:05">
+          <ui:RetryScope DisplayName="Retry Scope for Logout" sap:VirtualizedContainerService.HintSize="566.4,1443.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_RetryNumber]" RetryInterval="[in_RetryIntervalMedium]">
             <ui:RetryScope.ActivityBody>
               <ActivityAction>
-                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="524.8,588.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="524.8,1195.2" sap2010:WorkflowViewState.IdRef="Sequence_15">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -121,24 +122,24 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists 'DIV'" Exists="[LoggedIn]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="663b2dfb-16c7-4088-901a-4600be304372" InformativeScreenshot="c439aacdd59d9a60c0b65711c1a8c60a" Selector="&lt;html app='chrome.exe' title='Hup Hin SDMS' /&gt;&lt;webctrl aaname='FUJIFILM* [Administration]' tag='DIV' /&gt;" TimeoutMS="[in_DelayShort]" WaitForReady="INTERACTIVE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="663b2dfb-16c7-4088-901a-4600be304372" InformativeScreenshot="c439aacdd59d9a60c0b65711c1a8c60a" Selector="&lt;html app='chrome.exe' title='Hup Hin SDMS' /&gt;&lt;webctrl aaname='FUJIFILM* [Administration]' tag='DIV' /&gt;" TimeoutMS="[in_DelayMedium]" WaitForReady="INTERACTIVE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If Condition="[LoggedIn]" DisplayName="If system is already logged into SDMS" sap:VirtualizedContainerService.HintSize="483.2,248.8" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If Condition="[LoggedIn]" DisplayName="If system is already logged into SDMS" sap:VirtualizedContainerService.HintSize="483.2,855.2" sap2010:WorkflowViewState.IdRef="If_3">
                     <If.Then>
-                      <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" ContinueOnError="True" DisplayName="Open Chrome: Hup Hin SDMS" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="Never" ScopeGuid="4c931ca6-acdc-4497-8206-0cae4bb45aff" Version="V2">
+                      <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" CloseMode="Always" ContinueOnError="True" DisplayName="Open Chrome: Hup Hin SDMS" sap:VirtualizedContainerService.HintSize="433.6,666.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" OpenMode="Never" ScopeGuid="4c931ca6-acdc-4497-8206-0cae4bb45aff" Version="V2">
                         <uix:NApplicationCard.Body>
                           <ActivityAction x:TypeArguments="x:Object">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,448.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,449.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <uix:NHover DisplayName="Hover 'FUJIFILM [Administratio…'" sap:VirtualizedContainerService.HintSize="333.6,157.6" HoverTime="10" sap2010:WorkflowViewState.IdRef="NHover_1" ScopeIdentifier="4c931ca6-acdc-4497-8206-0cae4bb45aff" Version="V1">
+                              <uix:NHover DisplayName="Hover 'FUJIFILM [Administratio…'" sap:VirtualizedContainerService.HintSize="333.6,157.6" HoverTime="[in_DelayMedium]" sap2010:WorkflowViewState.IdRef="NHover_1" ScopeIdentifier="4c931ca6-acdc-4497-8206-0cae4bb45aff" Version="V1">
                                 <uix:NHover.Target>
                                   <uix:TargetAnchorable BrowserURL="https://hhtc.insightservicing.sg/landing" DesignTimeRectangle="1693, 161, 132, 50" FriendlyName="'FUJIFILM [Administratio…'" FullSelectorArgument="&lt;webctrl aaname='FUJIFILM                                    [Administration]' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='FUJIFILM                                    [Administration]' tag='DIV' type='' class='' check:innerText='FUJIFILM&amp;#xD;&amp;#xA;[Administration]' /&gt;" Guid="0cb34cfa-e6ef-4912-85ac-460af5c01d3f" ImageBase64="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" InformativeScreenshot="b4b21f0240b5a19f34e26e7e653bd3db.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Hup Hin SDMS' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive" WaitForReadyArgument="Complete" />
                                 </uix:NHover.Target>
@@ -156,7 +157,7 @@
                         </uix:NApplicationCard.TargetApp>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -185,7 +186,7 @@
             </ui:RetryScope.ActivityBody>
             <ui:RetryScope.Condition>
               <ActivityFunc x:TypeArguments="x:Boolean">
-                <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True" Expression="[LogoutSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
+                <ui:CheckTrue ErrorMessage="{x:Null}" DisplayName="Check True logout success" Expression="[LogoutSuccess]" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="CheckTrue_1" />
               </ActivityFunc>
             </ui:RetryScope.Condition>
           </ui:RetryScope>
@@ -193,10 +194,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="611.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,318.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -204,7 +205,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="375.2,248" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>

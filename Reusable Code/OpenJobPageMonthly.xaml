@@ -4,6 +4,7 @@
     <x:Property Name="in_DelayAfterMedium" Type="InArgument(x:Int32)" />
     <x:Property Name="in_RetryNumber" Type="InArgument(x:Int32)" />
     <x:Property Name="in_DelayLong" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RetryIntervalMedium" Type="InArgument(x:TimeSpan)" />
   </x:Members>
   <this:Open.in_RetryNumber>
     <InArgument x:TypeArguments="x:Int32" />
@@ -115,7 +116,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:RetryScope DisplayName="Retry Scope to check if jobs page opened" sap:VirtualizedContainerService.HintSize="961.6,1554.4" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_RetryNumber]" RetryInterval="00:00:05">
+    <ui:RetryScope DisplayName="Retry Scope to check if jobs page opened" sap:VirtualizedContainerService.HintSize="961.6,1554.4" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_RetryNumber]" RetryInterval="[in_RetryIntervalMedium]">
       <ui:RetryScope.ActivityBody>
         <ActivityAction>
           <Sequence DisplayName="Action 1" sap:VirtualizedContainerService.HintSize="920,1306.4" sap2010:WorkflowViewState.IdRef="Sequence_9">

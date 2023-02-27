@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DailyProcessSequence" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DailyProcessSequence" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem1" Type="InArgument(sd:DataRow)" />
     <x:Property Name="in_Config1" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -12,10 +12,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2480,13669.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2010.4,10577.6</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DailyProcessSequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="41">
+    <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -57,10 +57,11 @@
       <x:String>System.ComponentModel</x:String>
       <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
       <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="37">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -97,19 +98,18 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Processing steps for Consolidated process like fetching deatils from SDMS portal and entering them to output file. This will also download DO PDFs for Consolidated process." DisplayName="Consolidated ProcessSequence" sap:VirtualizedContainerService.HintSize="2490.4,13604.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Processing steps for Consolidated process like fetching deatils from SDMS portal and entering them to output file. This will also download DO PDFs for Consolidated process." DisplayName="Consolidated ProcessSequence" sap:VirtualizedContainerService.HintSize="2020.8,10512.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="CompanyName" />
       <Variable x:TypeArguments="x:Boolean" Name="DOPDFDownloadSuccess" />
       <Variable x:TypeArguments="x:String" Name="JobSiteAddress" />
       <Variable x:TypeArguments="x:String" Name="DONumber" />
-      <Variable x:TypeArguments="x:String" Name="EndJobTimeAfterLunch" />
-      <Variable x:TypeArguments="x:String" Name="StartJobTimeAfterLunch" />
-      <Variable x:TypeArguments="x:String" Name="EndJobTimeBeforeLunch" />
-      <Variable x:TypeArguments="x:String" Name="StartJobTimeBeforeLunch" />
+      <Variable x:TypeArguments="x:String" Name="EndTime2" />
+      <Variable x:TypeArguments="x:String" Name="StartTime2" />
+      <Variable x:TypeArguments="x:String" Name="EndTime1" />
+      <Variable x:TypeArguments="x:String" Name="StartTime1" />
       <Variable x:TypeArguments="x:Boolean" Name="SignatureFlag" />
       <Variable x:TypeArguments="x:String" Name="ItemGroup" />
       <Variable x:TypeArguments="x:String" Name="ItemSerial" />
@@ -117,6 +117,8 @@
       <Variable x:TypeArguments="x:String" Name="DOFilename" />
       <Variable x:TypeArguments="x:String" Name="CurrentDOFilePath" />
       <Variable x:TypeArguments="x:Boolean" Name="FileDownloaded" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt_JobSite" />
+      <Variable x:TypeArguments="sd:DataTable" Default="[new DataTable]" Name="dt_ExtractedData" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -124,7 +126,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch for Consolidated " sap:VirtualizedContainerService.HintSize="2448.8,13480.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch for Consolidated " sap:VirtualizedContainerService.HintSize="1979.2,10388.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -132,24 +134,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Open delivery order page" sap:VirtualizedContainerService.HintSize="2412,13249.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="fe9922ab-8734-489e-a259-7419410adaec" Version="V2">
+        <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Open delivery order page" sap:VirtualizedContainerService.HintSize="1942.4,10157.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="fe9922ab-8734-489e-a259-7419410adaec" Version="V2">
           <uix:NApplicationCard.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do these steps" sap:VirtualizedContainerService.HintSize="2378.4,13032.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
+              <Sequence DisplayName="Do these steps" sap:VirtualizedContainerService.HintSize="1908.8,9940.8" sap2010:WorkflowViewState.IdRef="Sequence_22">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message - Enter URL" sap:VirtualizedContainerService.HintSize="2336.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering the DO Transaction URL...&quot;]" />
-                <uix:NGoToUrl DisplayName="Go To delivery orders URL" sap:VirtualizedContainerService.HintSize="2336.8,82.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_TransactionItem1(&quot;URL&quot;).tostring]" Version="V1" />
-                <Sequence DisplayName="Fetch Info Tab details" sap:VirtualizedContainerService.HintSize="2336.8,6612.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="sd:DataTable" Name="JobSiteDt" />
-                  </Sequence.Variables>
+                <ui:LogMessage DisplayName="Log Message - Enter URL" sap:VirtualizedContainerService.HintSize="1867.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering the DO Transaction URL...&quot;]" />
+                <uix:NGoToUrl DisplayName="Go To delivery orders URL" sap:VirtualizedContainerService.HintSize="1867.2,82.4" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_TransactionItem1(&quot;URL&quot;).tostring]" Version="V1" />
+                <Sequence DisplayName="Fetch Info Tab details" sap:VirtualizedContainerService.HintSize="1867.2,6612.8" sap2010:WorkflowViewState.IdRef="Sequence_15">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -184,12 +183,12 @@
                     </uix:NGetText.Text>
                   </uix:NGetText>
                   <ui:LogMessage DisplayName="Log Message - Fetch Job Site address" sap:VirtualizedContainerService.HintSize="1825.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Fetching Job Site Address...&quot;]" />
-                  <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[JobSiteDt]" DisplayName="Extract Table Data JobSite" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Job Site' ReferenceIdx='0' Name='Job Site'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Job Site Address' ReferenceIdx='1' Name='Job Site Address'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Postal Code' ReferenceIdx='2' Name='Postal Code'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Contact Person' ReferenceIdx='3' Name='Contact Person'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Contact Number' ReferenceIdx='4' Name='Contact Number'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Job Site Type' ReferenceIdx='5' Name='Job Site Type'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Opening Time' ReferenceIdx='6' Name='Opening Time'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Closing Time' ReferenceIdx='7' Name='Closing Time'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Job Site' attr='text' /&gt;&lt;column name='Job Site Address' attr='text' /&gt;&lt;column name='Postal Code' attr='text' /&gt;&lt;column name='Contact Person' attr='text' /&gt;&lt;column name='Contact Number' attr='text' /&gt;&lt;column name='Job Site Type' attr='text' /&gt;&lt;column name='Opening Time' attr='text' /&gt;&lt;column name='Closing Time' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="1825.6,157.6" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="fe9922ab-8734-489e-a259-7419410adaec" Version="V1">
+                  <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[dt_JobSite]" DisplayName="Extract Table Data JobSite" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Job Site' ReferenceIdx='0' Name='Job Site'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Job Site Address' ReferenceIdx='1' Name='Job Site Address'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Postal Code' ReferenceIdx='2' Name='Postal Code'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Contact Person' ReferenceIdx='3' Name='Contact Person'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Contact Number' ReferenceIdx='4' Name='Contact Number'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Job Site Type' ReferenceIdx='5' Name='Job Site Type'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Opening Time' ReferenceIdx='6' Name='Opening Time'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Closing Time' ReferenceIdx='7' Name='Closing Time'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='Job Site' attr='text' /&gt;&lt;column name='Job Site Address' attr='text' /&gt;&lt;column name='Postal Code' attr='text' /&gt;&lt;column name='Contact Person' attr='text' /&gt;&lt;column name='Contact Number' attr='text' /&gt;&lt;column name='Job Site Type' attr='text' /&gt;&lt;column name='Opening Time' attr='text' /&gt;&lt;column name='Closing Time' attr='text' /&gt;&lt;/extract-table&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="1825.6,157.6" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="fe9922ab-8734-489e-a259-7419410adaec" Version="V1">
                     <uix:NExtractData.Target>
                       <uix:TargetAnchorable DesignTimeRectangle="134, 618, 1329, 143" FriendlyName="'Job Site'" FullSelectorArgument="&lt;webctrl aaname='Job Site Job Site Address Postal Code Contact Person Contact Num*' tag='TABLE' /&gt;" Guid="8574c6b7-3271-4350-9ba1-84278eb8d817" InformativeScreenshot="40208a5c31bb002b697c67fd42e44bcb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Hup Hin SDMS' /&gt;" SearchSteps="Selector" Visibility="Interactive" />
                     </uix:NExtractData.Target>
                   </uix:NExtractData>
-                  <If Condition="[JobSiteDt.Rows.Count=1]" DisplayName="If combine multiple addresses if they exist." sap:VirtualizedContainerService.HintSize="1825.6,52.8" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If Condition="[dt_JobSite.Rows.Count=1]" DisplayName="If combine multiple addresses if they exist." sap:VirtualizedContainerService.HintSize="1825.6,52.8" sap2010:WorkflowViewState.IdRef="If_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -202,7 +201,7 @@
                           <OutArgument x:TypeArguments="x:String">[JobSiteAddress]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[JobSiteDt.Rows(0)("Job Site Address").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String">[dt_JobSite.Rows(0)("Job Site Address").ToString]</InArgument>
                         </Assign.Value>
                       </Assign>
                     </If.Then>
@@ -212,7 +211,7 @@
                           <OutArgument x:TypeArguments="x:String">[JobSiteAddress]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:String" xml:space="preserve">[JobSiteDt.Rows(0)("Job Site Address").ToString+" -  "+JobSiteDt.Rows(1)("Job Site Address").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" xml:space="preserve">[dt_JobSite.Rows(0)("Job Site Address").ToString+" -  "+dt_JobSite.Rows(1)("Job Site Address").ToString]</InArgument>
                         </Assign.Value>
                       </Assign>
                     </If.Else>
@@ -244,7 +243,7 @@
                       </uix:TargetAnchorable>
                     </uix:NGetText.Target>
                     <uix:NGetText.Text>
-                      <OutArgument x:TypeArguments="x:String">[StartJobTimeBeforeLunch]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[StartTime1]</OutArgument>
                     </uix:NGetText.Text>
                   </uix:NGetText>
                   <ui:LogMessage DisplayName="Log Message - Fetch End Time 1" sap:VirtualizedContainerService.HintSize="1825.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Fetching End Time 1...&quot;]" />
@@ -259,7 +258,7 @@
                       </uix:TargetAnchorable>
                     </uix:NGetText.Target>
                     <uix:NGetText.Text>
-                      <OutArgument x:TypeArguments="x:String">[EndJobTimeBeforeLunch]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[EndTime1]</OutArgument>
                     </uix:NGetText.Text>
                   </uix:NGetText>
                   <ui:LogMessage DisplayName="Log Message - Fetch Start Time 2" sap:VirtualizedContainerService.HintSize="1825.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Fetching Start Time 2...&quot;]" />
@@ -274,7 +273,7 @@
                       </uix:TargetAnchorable>
                     </uix:NGetText.Target>
                     <uix:NGetText.Text>
-                      <OutArgument x:TypeArguments="x:String">[StartJobTimeAfterLunch]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[StartTime2]</OutArgument>
                     </uix:NGetText.Text>
                   </uix:NGetText>
                   <ui:LogMessage DisplayName="Log Message - Fetch End Time 2" sap:VirtualizedContainerService.HintSize="1825.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Fetching End Time 2...&quot;]" />
@@ -289,7 +288,7 @@
                       </uix:TargetAnchorable>
                     </uix:NGetText.Target>
                     <uix:NGetText.Text>
-                      <OutArgument x:TypeArguments="x:String">[EndJobTimeAfterLunch]</OutArgument>
+                      <OutArgument x:TypeArguments="x:String">[EndTime2]</OutArgument>
                     </uix:NGetText.Text>
                   </uix:NGetText>
                   <ui:LogMessage DisplayName="Log Message - downloading the DO Pdfs" sap:VirtualizedContainerService.HintSize="1825.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Downloading the DO PDF for: &quot;+ in_TransactionItem1(&quot;Delivery Order No.&quot;).ToString]" />
@@ -350,7 +349,7 @@
                                           <OutArgument x:TypeArguments="x:String">[CurrentDOFilePath]</OutArgument>
                                         </Assign.To>
                                         <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">[in_DOPdfFolderPathConso+"\"+ DOFilename+".pdf"]</InArgument>
+                                          <InArgument x:TypeArguments="x:String">[string.Join("\",in_DOPdfFolderPathConso,DOFilename+".pdf")]</InArgument>
                                         </Assign.Value>
                                       </Assign>
                                       <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DelayAfter="0.6" DelayBefore="0.6" DisplayName="Type Into 'File name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="803.2,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="WindowMessages" ScopeIdentifier="fe9922ab-8734-489e-a259-7419410adaec" Text="[CurrentDOFilePath]" Version="V1">
@@ -572,7 +571,7 @@
                     </ui:RetryScope.Condition>
                   </ui:RetryScope>
                 </Sequence>
-                <Sequence DisplayName="Fetch Asstes Tab details" sap:VirtualizedContainerService.HintSize="2336.8,1376" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <Sequence DisplayName="Fetch Asstes Tab details" sap:VirtualizedContainerService.HintSize="1867.2,1376" sap2010:WorkflowViewState.IdRef="Sequence_16">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -631,7 +630,7 @@
                     </uix:NGetText.Text>
                   </uix:NGetText>
                 </Sequence>
-                <Sequence DisplayName="Fetch Job tab details " sap:VirtualizedContainerService.HintSize="2336.8,610.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <Sequence DisplayName="Fetch Job tab details " sap:VirtualizedContainerService.HintSize="1867.2,610.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -699,58 +698,27 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </uix:NCheckState>
                 </Sequence>
-                <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="2336.8,3964" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
-                  <ueab:ExcelProcessScopeX.Body>
-                    <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                <ui:ClearDataTable DataTable="[dt_ExtractedData]" DisplayName="Clear Data Table dt_ExtractedData" sap:VirtualizedContainerService.HintSize="1867.2,80.8" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
+                <ui:BuildDataTable DataTable="[dt_ExtractedData]" DisplayName="Build Data Table - Crate datatable with required headings" sap:VirtualizedContainerService.HintSize="1867.2,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;DO_x0020_Number&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Company_x0020_Name&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;150&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Item_x0020_Group&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Item_x0020_Serial&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Job_x0020_Type&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Job_x0020_Site_x0020_address&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;300&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Start_x0020_Time_x0020_1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;End_x0020_Time_x0020_1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Start_x0020_Time_x0020_2&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;End_x0020_Time_x0020_2&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Signature&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;DO_x0020_or_x0020_Timesheet_x0020_File_x0020_Path&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ DONumber, CompanyName, ItemGroup, ItemSerial, JobType, JobSiteAddress, &quot;'&quot;+StartTime1, &quot;'&quot;+EndTime1, &quot;'&quot;+StartTime2, &quot;'&quot;+EndTime2, SignatureFlag, CurrentDOFilePath}]" DataTable="[dt_ExtractedData]" DisplayName="Add Data Row - Write data datatable" sap:VirtualizedContainerService.HintSize="1867.2,188" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                <ui:LogMessage DisplayName="Log Message - Enter data in output file" sap:VirtualizedContainerService.HintSize="1867.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Info" Message="[&quot;Writing data in output file...&quot;]" />
+                <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Excel Application Scope Output file" sap:VirtualizedContainerService.HintSize="1867.2,290.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[io_OutputFileConso1]">
+                  <ui:ExcelApplicationScope.Body>
+                    <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                       <ActivityAction.Argument>
-                        <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                        <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Do - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="550.4,3877.6" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                      <Sequence DisplayName="Do #1" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:LogMessage DisplayName="Log Message - Enter data in output file" sap:VirtualizedContainerService.HintSize="508.8,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;Starting to enter data in output file...&quot;]" />
-                        <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File - Write extracted details to daily master file" sap:VirtualizedContainerService.HintSize="508.8,3652" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="[io_OutputFileConso1]">
-                          <ueab:ExcelApplicationCard.Body>
-                            <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
-                              <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="OutputMasterExcel" />
-                              </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="475.2,3382.4" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message - Enter DO Number" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="Info" Message="[&quot;Entering DO Number...&quot;]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;J&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for DO Number" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[DONumber]" />
-                                <ui:LogMessage DisplayName="Log Message - Enter Company Name" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_33" Level="Info" Message="[&quot;Entering Company Name...&quot;]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;K&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Company Name" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_2" Value="[CompanyName]" />
-                                <ui:LogMessage DisplayName="Log Message - Enter Item Group" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_34" Level="Info" Message="[&quot;Entering Item Group...&quot;]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;L&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Item Group" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_3" Value="[ItemGroup]" />
-                                <ui:LogMessage DisplayName="Log Message - Enter Item Serial" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_36" Level="Info" Message="[&quot;Entering Item Serial...&quot;]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;M&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Item Serial" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_5" Value="[ItemSerial]" />
-                                <ui:LogMessage DisplayName="Log Message - Enerting Job Type" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Info" Message="[&quot;Entering Job Type...&quot;]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;N&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Job Type" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_6" Value="[JobType]" />
-                                <ui:LogMessage DisplayName="Log Message  - Enter Site Address" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_38" Level="Info" Message="[&quot;Entering Site Address...&quot;]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;O&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Site Address" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_7" Value="[JobSiteAddress]" />
-                                <ui:LogMessage DisplayName="Log Message - Enter the Start and End times" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_39" Level="Info" Message="[&quot;Entering the Start and End times...&quot;]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;P&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for before lunch Start time" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_8" Value="[&quot;'&quot;+StartJobTimeBeforeLunch]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;Q&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for before lunch end time" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_9" Value="[&quot;'&quot;+EndJobTimeBeforeLunch]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;R&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for After lunch Start time" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_10" Value="[&quot;'&quot;+StartJobTimeAfterLunch]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;S&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for After lunch end time" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_11" Value="[&quot;'&quot;+EndJobTimeAfterLunch]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;T&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for Signature available" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_12" Value="[SignatureFlag]" />
-                                <ueab:WriteCellX Cell="[OutputMasterExcel.Sheet(&quot;Fields to be extracted&quot;).Cell(&quot;U&quot;+ (io_TransactionNumber1+1).ToString)]" DisplayName="Write Cell for DO Path" sap:VirtualizedContainerService.HintSize="433.6,160" sap2010:WorkflowViewState.IdRef="WriteCellX_14" Value="[CurrentDOFilePath]" />
-                              </Sequence>
-                            </ActivityAction>
-                          </ueab:ExcelApplicationCard.Body>
-                        </ueab:ExcelApplicationCard>
+                        <ui:ExcelWriteRange AddHeaders="False" DataTable="[dt_ExtractedData]" DisplayName="Write Range For all extracted Details" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[in_Config1(&quot;SheetNameFieldsExtracted&quot;).ToString]" StartingCell="[&quot;J&quot;+ (io_TransactionNumber1+1).ToString]" />
                       </Sequence>
                     </ActivityAction>
-                  </ueab:ExcelProcessScopeX.Body>
-                </ueab:ExcelProcessScopeX>
+                  </ui:ExcelApplicationScope.Body>
+                </ui:ExcelApplicationScope>
               </Sequence>
             </ActivityAction>
           </uix:NApplicationCard.Body>
@@ -766,7 +734,7 @@
         </uix:NApplicationCard>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="2415.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1945.6,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
